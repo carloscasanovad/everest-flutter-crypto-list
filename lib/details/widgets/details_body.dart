@@ -37,7 +37,6 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
         builder: (BuildContext context,
             AsyncSnapshot<List<CryptoListModel>> snapshot) {
           if (snapshot.hasData) {
-            
             CryptoListModel dataCrypto = snapshot.data!.firstWhere(
               (crypto) => crypto.shortName == cryptoName,
             );

@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../shared/api/viewData/crypto_data_view_data.dart';
 import '../../shared/constants/app_text_styles.dart';
 import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 
 class CryptoListTile extends HookConsumerWidget {
-  CryptoListModel model;
+  CryptoDataViewData crypto;
   CryptoListTile({
     Key? key,
-    required this.model,
+    required this.crypto,
   }) : super(key: key);
 
   final formater = NumberFormat("#,##0.00", "pt");
@@ -24,20 +25,21 @@ class CryptoListTile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool visibility = ref.watch(visibilityProvider);
+    final userBalance = 0;
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 15),
       title: Text(
-        model.shortName,
+        crypto.name,
         style: kCryptoCardTitleStyle,
       ),
       subtitle: Text(
-        model.fullName,
+        crypto.symbol.toUpperCase(),
         style: kCryptoCardSubtitleStyle,
       ),
       leading: CircleAvatar(
         backgroundColor: const Color(0x00ffffff),
         radius: 20,
-        backgroundImage: AssetImage(model.cryptoLogo),
+        backgroundImage: NetworkImage(crypto.image),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -48,7 +50,7 @@ class CryptoListTile extends HookConsumerWidget {
             children: <Widget>[
               Text(
                 visibility
-                    ? 'R\$ ${formater.format(model.userBalance)}'
+                    ? 'R\$ ${formater.format(userBalance)}'
                     : 'R\$ $kDefaultHideValues',
                 style: kCryptoCardBalanceTrailingTextStyle,
               ),
@@ -61,11 +63,12 @@ class CryptoListTile extends HookConsumerWidget {
                   child: Text(
                     visibility
                         ? currencyConverter(
-                            Decimal.parse(model.userBalance.toString()),
-                            model.exchange,
-                            model.shortName,
+                            Decimal.parse(userBalance.toString()),
+                            Decimal.parse('2500'),
+                            // crypto.exchange,
+                            crypto.symbol.toUpperCase(),
                           )
-                        : "$kDefaultHideValues ${model.shortName}",
+                        : "$kDefaultHideValues ${crypto.symbol.toUpperCase()}",
                     style: kCryptoCardExchangeTrailingTextStyle,
                   ),
                 ),
@@ -76,7 +79,8 @@ class CryptoListTile extends HookConsumerWidget {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
-                ref.read(cryptoFilterProvider.notifier).state = model.shortName;
+                ref.read(cryptoFilterProvider.notifier).state =
+                    crypto.name;
                 Navigator.of(context).pushNamed('/details');
               },
               icon: const Icon(
