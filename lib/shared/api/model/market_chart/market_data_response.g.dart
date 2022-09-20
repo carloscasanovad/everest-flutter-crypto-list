@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'volume_chart_response.dart';
+part of 'market_data_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-VolumeChartResponse _$VolumeChartResponseFromJson(Map<String, dynamic> json) =>
-    VolumeChartResponse(
-      (json['values'] as List<dynamic>)
+MarketDataResponse _$MarketDataResponseFromJson(Map<String, dynamic> json) =>
+    MarketDataResponse(
+      (json['total_volumes'] as List<dynamic>)
           .map((e) => (e as List<dynamic>).map((e) => e as num).toList())
           .toList(),
     );
 
-Map<String, dynamic> _$VolumeChartResponseToJson(
-        VolumeChartResponse instance) =>
+Map<String, dynamic> _$MarketDataResponseToJson(MarketDataResponse instance) =>
     <String, dynamic>{
-      'values': instance.values,
+      'total_volumes': instance.total_volumes,
     };

@@ -1,9 +1,6 @@
 import 'package:everest_flutter_crypto_list/shared/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../shared/api/viewData/crypto_data_view_data.dart';
-import '../shared/constants/app_text_styles.dart';
 import '../shared/widgets/bottom_nav_bar.dart';
 
 class TransactionsPage extends ConsumerStatefulWidget {
@@ -18,7 +15,7 @@ class _TransactionsPageState extends ConsumerState<TransactionsPage> {
   @override
   Widget build(BuildContext context) {
     final getCryptoData = ref.watch(cryptosDataProvider);
-    final getVolumeChart = ref.watch(cryptosVolumeChart);
+    final getVolumeChart = ref.watch(marketChartDataProvider);
     return Scaffold(
       body: SafeArea(
           child: getVolumeChart.when(
@@ -26,7 +23,7 @@ class _TransactionsPageState extends ConsumerState<TransactionsPage> {
             padding: EdgeInsets.symmetric(vertical: 26, horizontal: 16),
             child: TextButton(
               onPressed: () {
-                print(data[0].total_volumes);
+                print(data.total_volumes);
               },
               child: Text("Data"),
             )),

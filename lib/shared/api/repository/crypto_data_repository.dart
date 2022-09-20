@@ -1,6 +1,6 @@
 import 'package:everest_flutter_crypto_list/shared/api/crypto_data_endpoint.dart';
-import 'package:everest_flutter_crypto_list/shared/api/model/crypto_data_response.dart';
-import 'package:everest_flutter_crypto_list/shared/api/model/volume_chart/get_crypto_volume_chart_response.dart';
+import 'package:everest_flutter_crypto_list/shared/api/model/crypto_data/crypto_data_response.dart';
+import 'package:everest_flutter_crypto_list/shared/api/model/market_chart/market_data_response.dart';
 
 class CryptoDataRepository {
   final CryptoDataEndpoint cryptoDataEndpoint;
@@ -16,9 +16,8 @@ class CryptoDataRepository {
     );
   }
 
-  Future<GetCryptoVolumeChartResponse> getCryptMarketChartData() async {
+  Future<MarketDataResponse> getCryptoMarketData() async {
     final response = await cryptoDataEndpoint.getCryptoMarketChart();
-    print(response.data);
-    return GetCryptoVolumeChartResponse.fromJson(response.data);
+    return MarketDataResponse.fromJson(response.data);
   }
 }

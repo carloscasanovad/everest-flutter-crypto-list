@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../shared/api/viewData/crypto_data_view_data.dart';
+import '../../shared/api/viewData/crypto_data/crypto_data_view_data.dart';
 import '../../shared/constants/app_text_styles.dart';
 import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
