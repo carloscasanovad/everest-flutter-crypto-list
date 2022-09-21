@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 
 import '../../shared/api/viewData/crypto_data/crypto_data_view_data.dart';
 import '../../shared/constants/app_text_styles.dart';
-import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 
@@ -80,7 +79,7 @@ class CryptoListTile extends HookConsumerWidget {
             child: IconButton(
               onPressed: () {
                 ref.read(cryptoFilterProvider.notifier).state =
-                    crypto.name;
+                    crypto.symbol.toUpperCase();
                 Navigator.of(context).pushNamed('/details');
               },
               icon: const Icon(

@@ -17,9 +17,6 @@ class GetCryptosDataUseCase {
 
   Future<MarketChartViewData> start() async {
     final response = await repository.getCryptoMarketData();
-    //Aqui ele retorna os valores, caso der um debbug, vá poder-se
-    //visualizar
-    print(response.total_volumes);
     return response.toViewMarketChartData();
   }
 }

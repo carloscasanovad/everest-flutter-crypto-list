@@ -29,32 +29,38 @@ class _CryptoDetailsBodyState extends ConsumerState<DetailsBody> {
 
   @override
   Widget build(BuildContext context) {
-    String cryptoName = ref.watch(cryptoFilterProvider);
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(18),
-      child: FutureBuilder(
-        future: cryptos,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<CryptoListModel>> snapshot) {
-          if (snapshot.hasData) {
-            CryptoListModel dataCrypto = snapshot.data!.firstWhere(
-              (crypto) => crypto.shortName == cryptoName,
-            );
+    final getVolumeChart = ref.watch(marketChartDataProvider);
+    return getVolumeChart.when(
+      data: (data) => SingleChildScrollView(
+        padding: const EdgeInsets.all(18),
+        child: FutureBuilder(
+          future: cryptos,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<CryptoListModel>> snapshot) {
+            if (snapshot.hasData) {
+              CryptoListModel dataCrypto = snapshot.data!.firstWhere(
+                (crypto) => crypto.shortName == 'BTC',
+              );
 
-            return Column(
-              children: [
-                DetailsHeader(dataCrypto: dataCrypto),
-                DetailsLineChart(dataCrypto: dataCrypto),
-                const LineChartListViewButtons(),
-                CryptoInformation(dataCrypto: dataCrypto),
-                const ConvertCryptoButton(),
-              ],
+              return Column(
+                children: [
+                  const DetailsHeader(),
+                  DetailsLineChart(dataCrypto: dataCrypto),
+                  const LineChartListViewButtons(),
+                  CryptoInformation(dataCrypto: dataCrypto),
+                  const ConvertCryptoButton(),
+                ],
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
             );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+          },
+        ),
+      ),
+      error: (error, stackTrace) => Center(child: Text('$error')),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }

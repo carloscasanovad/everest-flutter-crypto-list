@@ -1,48 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/constants/app_colors.dart';
-import '../../shared/model/crypto_list_model.dart';
+import '../../shared/providers/providers.dart';
 
-class DetailsHeader extends StatelessWidget {
-  final CryptoListModel dataCrypto;
+class DetailsHeader extends HookConsumerWidget {
   const DetailsHeader({
     Key? key,
-    required this.dataCrypto,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final getCryptoData = ref.watch(cryptosDataProvider);
+    String cryptoName = ref.watch(cryptoFilterProvider);
+    return getCryptoData.when(
+      data: (data) {
+        final cryptoData = data.cryptoListDataView.firstWhere((crypto) {
+          return crypto.symbol.toUpperCase() == cryptoName;
+        });
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  cryptoData.name,
+                  style: const TextStyle(
+                    fontSize: 32,
+                    color: kDefaultBlack,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                CircleAvatar(
+                  backgroundColor: const Color(0x00ffffff),
+                  radius: 30,
+                  backgroundImage: NetworkImage(cryptoData.image),
+                ),
+              ],
+            ),
             Text(
-              dataCrypto.fullName,
+              cryptoData.symbol.toUpperCase(),
               style: const TextStyle(
-                fontSize: 32,
-                color: kDefaultBlack,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w600,
+                fontSize: 17,
+                color: kDefaultGrey,
               ),
             ),
-            CircleAvatar(
-              backgroundColor: const Color(0x00ffffff),
-              radius: 30,
-              backgroundImage: AssetImage(dataCrypto.cryptoLogo),
-            ),
+            const SizedBox(height: 14),
           ],
-        ),
-        Text(
-          dataCrypto.shortName,
-          style: const TextStyle(
-            fontSize: 17,
-            color: kDefaultGrey,
-          ),
-        ),
-        const SizedBox(height: 14),
-      ],
+        );
+      },
+      error: (error, stackTrace) => Center(child: Text('$error')),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
