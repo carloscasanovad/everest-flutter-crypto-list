@@ -4,7 +4,7 @@ import 'package:everest_flutter_crypto_list/shared/api/viewData/market_chart/mar
 extension MarketDataMapper on MarketDataResponse {
   MarketChartViewData toViewMarketChartData() {
     return MarketChartViewData(
-      total_volumes: [],
+      total_volumes: total_volumes[0],
     );
   }
 }
