@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/api/viewData/crypto_data/crypto_data_view_data.dart';
+import '../../shared/api/crypto_data/viewData/crypto_data_view_data.dart';
 import '../../shared/model/crypto_list_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/repositories/crypto_list_repository.dart';

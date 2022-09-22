@@ -11,17 +11,15 @@ import 'crypto_information_variation_row.dart';
 class CryptoInformation extends HookConsumerWidget {
   CryptoInformation({
     Key? key,
-    required this.dataCrypto,
   }) : super(key: key);
 
-  final CryptoListModel dataCrypto;
   final formater = NumberFormat("#,##0.00", "pt");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndex = ref.watch(chartIndexTappedProvider);
-    double dayVariation =
-        dataCrypto.percentVariation.values.toList()[chartIndex];
+    double currentPrice = ref.watch(cryptoPriceProvider);
+    double dayVariation = 1000;
     return Padding(
       padding: const EdgeInsets.only(
         top: 8,
@@ -31,21 +29,19 @@ class CryptoInformation extends HookConsumerWidget {
         children: [
           CryptoInformationRow(
             description: 'Preço atual',
-            value:
-                'R\$ ${formater.format(dataCrypto.marketHistoryPrice.values.toList()[chartIndex])}',
+            value: 'R\$ ${formater.format(currentPrice)}',
           ),
           CryptoInformationVariationRow(
             description: 'Variação do dia',
             value: dayVariation,
           ),
-          CryptoInformationRow(
-            description: 'Quantidade',
-            value:
-                '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}',
-          ),
-          CryptoInformationRow(
+          const CryptoInformationRow(description: 'Quantidade', value: '2000'
+              // '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}',
+              ),
+          const CryptoInformationRow(
             description: 'Valor',
-            value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
+            value: '2000',
+            // value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
           ),
         ],
       ),

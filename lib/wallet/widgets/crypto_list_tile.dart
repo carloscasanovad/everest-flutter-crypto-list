@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../shared/api/viewData/crypto_data/crypto_data_view_data.dart';
+import '../../details/providers/providers.dart';
+import '../../shared/api/crypto_data/viewData/crypto_data_view_data.dart';
 import '../../shared/constants/app_text_styles.dart';
 import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
@@ -24,6 +25,7 @@ class CryptoListTile extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool visibility = ref.watch(visibilityProvider);
+    final String cryptoFilter = ref.watch(cryptoChartProvider);
     final userBalance = 0;
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 15),
@@ -80,6 +82,9 @@ class CryptoListTile extends HookConsumerWidget {
               onPressed: () {
                 ref.read(cryptoFilterProvider.notifier).state =
                     crypto.symbol.toUpperCase();
+                ref.read(cryptoChartProvider.notifier).state = crypto.id;
+                ref.read(cryptoPriceProvider.notifier).state =
+                    crypto.current_price;
                 Navigator.of(context).pushNamed('/details');
               },
               icon: const Icon(

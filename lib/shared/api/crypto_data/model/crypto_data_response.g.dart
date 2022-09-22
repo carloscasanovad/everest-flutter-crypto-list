@@ -12,9 +12,9 @@ CryptoDataResponse _$CryptoDataResponseFromJson(Map<String, dynamic> json) =>
       symbol: json['symbol'] as String,
       name: json['name'] as String,
       image: json['image'] as String,
-      currentPrice: (json['currentPrice'] as num).toDouble(),
-      marketCapChangePercentage24h:
-          (json['marketCapChangePercentage24h'] as num).toDouble(),
+      current_price: (json['current_price'] as num).toDouble(),
+      market_cap_change_percentage_24h:
+          (json['market_cap_change_percentage_24h'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$CryptoDataResponseToJson(CryptoDataResponse instance) =>
@@ -23,6 +23,6 @@ Map<String, dynamic> _$CryptoDataResponseToJson(CryptoDataResponse instance) =>
       'symbol': instance.symbol,
       'name': instance.name,
       'image': instance.image,
-      'currentPrice': instance.currentPrice,
-      'marketCapChangePercentage24h': instance.marketCapChangePercentage24h,
+      'current_price': instance.current_price,
+      'market_cap_change_percentage_24h': instance.market_cap_change_percentage_24h,
     };

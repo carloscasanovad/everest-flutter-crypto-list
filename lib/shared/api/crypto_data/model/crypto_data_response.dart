@@ -11,15 +11,15 @@ class CryptoDataResponse {
   final String symbol;
   final String name;
   final String image;
-  final double currentPrice;
-  final double marketCapChangePercentage24h;
+  final double current_price;
+  final double market_cap_change_percentage_24h;
   CryptoDataResponse({
     required this.id,
     required this.symbol,
     required this.name,
     required this.image,
-    required this.currentPrice,
-    required this.marketCapChangePercentage24h,
+    required this.current_price,
+    required this.market_cap_change_percentage_24h,
   });
 
   Map<String, dynamic> toMap() {
@@ -29,9 +29,9 @@ class CryptoDataResponse {
     result.addAll({'symbol': symbol});
     result.addAll({'name': name});
     result.addAll({'image': image});
-    result.addAll({'currentPrice': currentPrice});
+    result.addAll({'current_price': current_price});
     result
-        .addAll({'marketCapChangePercentage24h': marketCapChangePercentage24h});
+        .addAll({'market_cap_change_percentage_24h': market_cap_change_percentage_24h});
 
     return result;
   }
@@ -42,9 +42,9 @@ class CryptoDataResponse {
       symbol: map['symbol'] ?? '',
       name: map['name'] ?? '',
       image: map['image'] ?? '',
-      currentPrice: map['currentPrice']?.toDouble() ?? 0.0,
-      marketCapChangePercentage24h:
-          map['marketCapChangePercentage24h']?.toDouble() ?? 0.0,
+      current_price: map['current_price']?.toDouble() ?? 0.0,
+      market_cap_change_percentage_24h:
+          map['market_cap_change_percentage_24h']?.toDouble() ?? 0.0,
     );
   }
 

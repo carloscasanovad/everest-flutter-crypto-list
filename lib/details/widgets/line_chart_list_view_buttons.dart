@@ -3,7 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'line_chart_button_widget.dart';
 
 class LineChartListViewButtons extends StatelessWidget {
-  const LineChartListViewButtons({super.key});
+  const LineChartListViewButtons({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +16,23 @@ class LineChartListViewButtons extends StatelessWidget {
         children: [
           LineChartButtonWidget(
             dayTitle: '5D',
-            titleIndex: 0,
+            chartSubList: 85,
           ),
           LineChartButtonWidget(
             dayTitle: '15D',
-            titleIndex: 1,
+            chartSubList: 45,
           ),
           LineChartButtonWidget(
             dayTitle: '30D',
-            titleIndex: 2,
+            chartSubList: 30,
           ),
           LineChartButtonWidget(
             dayTitle: '45D',
-            titleIndex: 3,
+            chartSubList: 15,
           ),
           LineChartButtonWidget(
             dayTitle: '90D',
-            titleIndex: 4,
+            chartSubList: 5,
           ),
         ],
       ),

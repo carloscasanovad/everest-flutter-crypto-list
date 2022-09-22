@@ -6,6 +6,6 @@ import '../../wallet/views/wallet_page.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   WalletPage.route: (context) => const WalletPage(),
-  TransactionsPage.route: (context) => const TransactionsPage(),
+  // TransactionsPage.route: (context) => const TransactionsPage(),
   DetailsPage.route: (context) => DetailsPage(),
 };

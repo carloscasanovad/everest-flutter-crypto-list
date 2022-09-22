@@ -8,12 +8,12 @@ part of 'market_data_response.dart';
 
 MarketDataResponse _$MarketDataResponseFromJson(Map<String, dynamic> json) =>
     MarketDataResponse(
-      (json['total_volumes'] as List<dynamic>)
+      (json['prices'] as List<dynamic>)
           .map((e) => (e as List<dynamic>).map((e) => e as num).toList())
           .toList(),
     );
 
 Map<String, dynamic> _$MarketDataResponseToJson(MarketDataResponse instance) =>
     <String, dynamic>{
-      'total_volumes': instance.total_volumes,
+      'prices': instance.prices,
     };

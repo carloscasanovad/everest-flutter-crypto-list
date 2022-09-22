@@ -14,6 +14,7 @@ class DetailsPage extends HookConsumerWidget {
   static const route = '/details';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kDefaultBackgroundColor,
@@ -23,7 +24,7 @@ class DetailsPage extends HookConsumerWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            ref.read(chartDayProvider.notifier).state = '5';
+            ref.read(chartDayProvider.notifier).state = 85;
             ref.read(chartIndexTappedProvider.notifier).state = 0;
             Navigator.of(context).pop();
           },
