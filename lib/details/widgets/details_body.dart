@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/providers/providers.dart';
-import '../providers/providers.dart';
 import 'convert_crypto_button.dart';
 import 'crypto_information.dart';
 import 'details_header.dart';

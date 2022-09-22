@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+import 'package:everest_flutter_crypto_list/shared/api/crypto_data/model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -85,7 +86,8 @@ class CryptoListTile extends HookConsumerWidget {
                 ref.read(cryptoChartProvider.notifier).state = crypto.id;
                 ref.read(cryptoPriceProvider.notifier).state =
                     crypto.current_price;
-                Navigator.of(context).pushNamed('/details');
+                Navigator.of(context).pushNamed('/details',
+                    arguments: CryptoDataArguments(crypto: crypto));
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,
