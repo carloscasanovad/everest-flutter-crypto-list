@@ -1,5 +1,5 @@
-import 'package:everest_flutter_crypto_list/transactions/transactions_page.dart';
-import 'package:everest_flutter_crypto_list/wallet/views/wallet_page.dart';
+import '../../modules/transactions/transactions_page.dart';
+import '../../modules/wallet/views/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../constants/app_colors.dart';
