@@ -17,16 +17,16 @@ class _WalletHeaderState extends ConsumerState<Header> {
   final formater = NumberFormat("#,##0.00", "pt");
   CryptoListRepository repository = CryptoListRepository();
 
-  String walletBalance() {
-    double wallet = 0;
-    for (var crypto in repository.cryptoListRepository) {
-      wallet += crypto.userBalance;
-    }
-    return formater.format(wallet);
-  }
+  // String walletBalance() {
+  //   for (var crypto in repository.cryptoListRepository) {
+  //     wallet += crypto.userBalance;
+  //   }
+  //   return formater.format(wallet);
+  // }
 
   @override
   Widget build(BuildContext context) {
+    int wallet = ref.watch(userBalanceProvider);
     final bool visibility = ref.watch(visibilityProvider);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +68,7 @@ class _WalletHeaderState extends ConsumerState<Header> {
                         style: kWalletBalanceTextStyle,
                       ),
                       Text(
-                        visibility ? walletBalance() : kDefaultHideValues,
+                        visibility ? '$wallet' : kDefaultHideValues,
                         style: kWalletBalanceTextStyle,
                       ),
                     ],

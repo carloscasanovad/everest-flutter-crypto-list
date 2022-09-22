@@ -8,16 +8,16 @@ import '../providers/providers.dart';
 class LineChartButtonWidget extends HookConsumerWidget {
   int chartSubList;
   String dayTitle;
+  MarketChartViewData marketChartdata;
   LineChartButtonWidget({
     required this.chartSubList,
     required this.dayTitle,
-  }) : super();
+    required this.marketChartdata,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndexTapped = ref.watch(chartIndexTappedProvider);
-    MarketChartViewData marketChartPrices =
-        ref.watch(marketChartPricesProvider);
     return Container(
       margin: const EdgeInsets.only(
         top: 17,
@@ -37,7 +37,7 @@ class LineChartButtonWidget extends HookConsumerWidget {
           ref.read(chartIndexTappedProvider.notifier).state = chartSubList;
           ref.read(chartDayProvider.notifier).state = chartSubList;
           ref.read(cryptoPriceProvider.notifier).state =
-              marketChartPrices.prices[chartSubList][1].toDouble();
+              marketChartdata.prices[chartSubList][1].toDouble();
         },
         child: Text(
           dayTitle,

@@ -6,7 +6,7 @@ final chartIndexTappedProvider = StateProvider<int>(
   (ref) => 0,
 );
 final chartDayProvider = StateProvider<int>(
-  (ref) => 85,
+  (ref) => 84,
 );
 
 final cryptoPriceProvider = StateProvider<double>(

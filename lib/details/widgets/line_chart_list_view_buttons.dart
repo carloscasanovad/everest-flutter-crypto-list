@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
 
+import '../../shared/api/market_chart/viewData/market_chart_view_data.dart';
 import 'line_chart_button_widget.dart';
 
 class LineChartListViewButtons extends StatelessWidget {
-  const LineChartListViewButtons({
+  MarketChartViewData marketChartdata;
+  LineChartListViewButtons({
     Key? key,
+    required this.marketChartdata,
   }) : super(key: key);
 
   @override
@@ -16,23 +19,28 @@ class LineChartListViewButtons extends StatelessWidget {
         children: [
           LineChartButtonWidget(
             dayTitle: '5D',
-            chartSubList: 85,
+            chartSubList: 84,
+            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayTitle: '15D',
-            chartSubList: 45,
+            chartSubList: 44,
+            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayTitle: '30D',
-            chartSubList: 30,
+            chartSubList: 29,
+            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayTitle: '45D',
-            chartSubList: 15,
+            chartSubList: 14,
+            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayTitle: '90D',
-            chartSubList: 5,
+            chartSubList: 4,
+            marketChartdata: marketChartdata,
           ),
         ],
       ),

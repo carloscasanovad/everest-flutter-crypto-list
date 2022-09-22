@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/api/crypto_data/viewData/crypto_data_view_data.dart';
+import '../../shared/api/crypto_data/model/crypto_data_arguments.dart';
 import '../../shared/constants/app_colors.dart';
 
 class DetailsHeader extends StatelessWidget {
-  CryptoDataViewData cryptoData;
+  CryptoDataArguments cryptoDataArguments;
+
   DetailsHeader({
     Key? key,
-    required this.cryptoData,
+    required this.cryptoDataArguments,
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class DetailsHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              cryptoData.name,
+              cryptoDataArguments.crypto.name,
               style: const TextStyle(
                 fontSize: 32,
                 color: kDefaultBlack,
@@ -30,12 +31,12 @@ class DetailsHeader extends StatelessWidget {
             CircleAvatar(
               backgroundColor: const Color(0x00ffffff),
               radius: 30,
-              backgroundImage: NetworkImage(cryptoData.image),
+              backgroundImage: NetworkImage(cryptoDataArguments.crypto.image),
             ),
           ],
         ),
         Text(
-          cryptoData.symbol.toUpperCase(),
+          cryptoDataArguments.crypto.symbol.toUpperCase(),
           style: const TextStyle(
             fontSize: 17,
             color: kDefaultGrey,

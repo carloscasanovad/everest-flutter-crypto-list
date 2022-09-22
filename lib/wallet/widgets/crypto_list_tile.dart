@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:decimal/decimal.dart';
 import 'package:everest_flutter_crypto_list/shared/api/crypto_data/model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
@@ -10,38 +12,49 @@ import '../../shared/constants/app_text_styles.dart';
 import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 
-class CryptoListTile extends HookConsumerWidget {
+class CryptoListTile extends ConsumerStatefulWidget {
   CryptoDataViewData crypto;
+  int cryptoBalance;
   CryptoListTile({
     Key? key,
     required this.crypto,
+    required this.cryptoBalance,
   }) : super(key: key);
 
+  @override
+  ConsumerState<CryptoListTile> createState() => _CryptoListTileState();
+}
+
+class _CryptoListTileState extends ConsumerState<CryptoListTile> {
   final formater = NumberFormat("#,##0.00", "pt");
-  String currencyConverter(Decimal balance, Decimal exchange, String currency) {
-    Decimal cryptoExchange = balance * exchange;
+  String currencyConverter(double balance, double exchange, String currency) {
+    double cryptoExchange = balance / exchange;
     return '${cryptoExchange.toStringAsFixed(2)} $currency';
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final bool visibility = ref.watch(visibilityProvider);
-    final String cryptoFilter = ref.watch(cryptoChartProvider);
-    final userBalance = 0;
+
     return ListTile(
       contentPadding: const EdgeInsets.only(left: 15),
       title: Text(
-        crypto.name,
+        widget.crypto.name,
         style: kCryptoCardTitleStyle,
       ),
       subtitle: Text(
-        crypto.symbol.toUpperCase(),
+        widget.crypto.symbol.toUpperCase(),
         style: kCryptoCardSubtitleStyle,
       ),
       leading: CircleAvatar(
         backgroundColor: const Color(0x00ffffff),
         radius: 20,
-        backgroundImage: NetworkImage(crypto.image),
+        backgroundImage: NetworkImage(widget.crypto.image),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -52,25 +65,24 @@ class CryptoListTile extends HookConsumerWidget {
             children: <Widget>[
               Text(
                 visibility
-                    ? 'R\$ ${formater.format(userBalance)}'
+                    ? 'R\$ ${formater.format(widget.cryptoBalance)}'
                     : 'R\$ $kDefaultHideValues',
                 style: kCryptoCardBalanceTrailingTextStyle,
               ),
               Container(
                 padding: const EdgeInsets.only(top: 4),
-                width: 100,
+                width: 150,
                 height: 20,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     visibility
                         ? currencyConverter(
-                            Decimal.parse(userBalance.toString()),
-                            Decimal.parse('2500'),
-                            // crypto.exchange,
-                            crypto.symbol.toUpperCase(),
+                            widget.cryptoBalance.toDouble(),
+                            widget.crypto.current_price,
+                            widget.crypto.symbol.toUpperCase(),
                           )
-                        : "$kDefaultHideValues ${crypto.symbol.toUpperCase()}",
+                        : "$kDefaultHideValues ${widget.crypto.symbol.toUpperCase()}",
                     style: kCryptoCardExchangeTrailingTextStyle,
                   ),
                 ),
@@ -82,12 +94,12 @@ class CryptoListTile extends HookConsumerWidget {
             child: IconButton(
               onPressed: () {
                 ref.read(cryptoFilterProvider.notifier).state =
-                    crypto.symbol.toUpperCase();
-                ref.read(cryptoChartProvider.notifier).state = crypto.id;
+                    widget.crypto.symbol.toUpperCase();
+                ref.read(cryptoChartProvider.notifier).state = widget.crypto.id;
                 ref.read(cryptoPriceProvider.notifier).state =
-                    crypto.current_price;
+                    widget.crypto.current_price;
                 Navigator.of(context).pushNamed('/details',
-                    arguments: CryptoDataArguments(crypto: crypto));
+                    arguments: CryptoDataArguments(crypto: widget.crypto));
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,

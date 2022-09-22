@@ -18,7 +18,7 @@ class DetailsPage extends HookConsumerWidget {
   static const route = '/details';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-print(cryptoDataArguments.crypto);
+    print(cryptoDataArguments.crypto);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kDefaultBackgroundColor,
@@ -39,7 +39,9 @@ print(cryptoDataArguments.crypto);
           ),
         ),
       ),
-      body: const DetailsBody(),
+      body: DetailsBody(
+        cryptoDataArguments: cryptoDataArguments,
+      ),
     );
   }
 }

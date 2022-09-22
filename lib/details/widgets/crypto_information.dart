@@ -1,25 +1,30 @@
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../shared/model/crypto_list_model.dart';
+import '../../shared/api/market_chart/viewData/market_chart_view_data.dart';
 import '../providers/providers.dart';
 import 'crypto_infomation_row.dart';
 import 'crypto_information_variation_row.dart';
 
 class CryptoInformation extends HookConsumerWidget {
+  MarketChartViewData marketChartData;
   CryptoInformation({
     Key? key,
+    required this.marketChartData,
   }) : super(key: key);
 
   final formater = NumberFormat("#,##0.00", "pt");
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int chartIndex = ref.watch(chartIndexTappedProvider);
     double currentPrice = ref.watch(cryptoPriceProvider);
-    double dayVariation = 1000;
+    int marketChartDay = ref.watch(chartDayProvider);
+    List<List<num>> cryptoChartPrices = marketChartData.prices;
+    double initialValue =
+        cryptoChartPrices[cryptoChartPrices.length - 1][1].toDouble();
+    double finalValue = cryptoChartPrices[marketChartDay][1].toDouble();
+    double dayVariation = (initialValue / finalValue - 1) * 100;
     return Padding(
       padding: const EdgeInsets.only(
         top: 8,

@@ -1,4 +1,4 @@
-import 'package:everest_flutter_crypto_list/shared/api/market_chart/mapper/market_chart_mapper.dart';
+import 'package:everest_flutter_crypto_list/shared/api/mapper/market_chart_mapper.dart';
 
 import '../repository/market_chart_repository.dart';
 import '../viewData/market_chart_view_data.dart';
