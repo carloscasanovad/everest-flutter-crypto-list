@@ -4,34 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/api/crypto_data/viewData/crypto_data_view_data.dart';
-import '../../shared/model/crypto_list_model.dart';
+import '../../shared/model/user_wallet_model.dart';
 import '../../shared/providers/providers.dart';
-import '../../shared/repositories/crypto_list_repository.dart';
-import '../providers/providers.dart';
 import 'crypto_list_tile.dart';
 
 class CryptoListView extends ConsumerStatefulWidget {
-  const CryptoListView({Key? key}) : super(key: key);
+  List<UserWalletModel> userCryptoWallet;
+  CryptoListView({
+    required this.userCryptoWallet,
+  });
 
   @override
   ConsumerState<CryptoListView> createState() => _CryptoListViewState();
 }
 
 class _CryptoListViewState extends ConsumerState<CryptoListView> {
-  CryptoListRepository repository = CryptoListRepository();
-  late Future<List<CryptoListModel>> cryptos;
-  int userBalance = 0;
-
-  @override
-  void initState() {
-    getCryptosData();
-    super.initState();
-  }
-
-  Future<void> getCryptosData() {
-    cryptos = repository.getAllCryptos();
-    return cryptos;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +34,12 @@ class _CryptoListViewState extends ConsumerState<CryptoListView> {
             ),
             itemCount: cryptoData.length,
             itemBuilder: (context, index) {
-              int cryptoBalance = Random().nextInt(503) * 4;
-              userBalance += cryptoBalance;
-              //ref.read(userBalanceProvider.notifier).state = userBalance;
               CryptoDataViewData crypto = cryptoData[index];
               return Card(
                 child: CryptoListTile(
                   crypto: crypto,
-                  cryptoBalance: cryptoBalance,
+                  cryptoBalance:
+                      widget.userCryptoWallet[index].userCryptoBalance,
                 ),
               );
             },

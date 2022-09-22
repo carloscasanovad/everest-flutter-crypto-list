@@ -11,14 +11,18 @@ class CryptoDataResponse {
   final String symbol;
   final String name;
   final String image;
+  // ignore: non_constant_identifier_names
   final double current_price;
+  // ignore: non_constant_identifier_names
   final double market_cap_change_percentage_24h;
   CryptoDataResponse({
     required this.id,
     required this.symbol,
     required this.name,
     required this.image,
+    // ignore: non_constant_identifier_names
     required this.current_price,
+    // ignore: non_constant_identifier_names
     required this.market_cap_change_percentage_24h,
   });
 

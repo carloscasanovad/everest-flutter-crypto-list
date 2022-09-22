@@ -3,11 +3,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
-import '../../shared/repositories/crypto_list_repository.dart';
+import '../../shared/model/user_wallet_model.dart';
 import '../providers/providers.dart';
 
 class Header extends ConsumerStatefulWidget {
-  const Header({Key? key}) : super(key: key);
+  List<UserWalletModel> userCryptoWallet;
+  Header({
+    required this.userCryptoWallet,
+  });
 
   @override
   ConsumerState<Header> createState() => _WalletHeaderState();
@@ -15,18 +18,18 @@ class Header extends ConsumerStatefulWidget {
 
 class _WalletHeaderState extends ConsumerState<Header> {
   final formater = NumberFormat("#,##0.00", "pt");
-  CryptoListRepository repository = CryptoListRepository();
+  double balance = 0;
 
-  // String walletBalance() {
-  //   for (var crypto in repository.cryptoListRepository) {
-  //     wallet += crypto.userBalance;
-  //   }
-  //   return formater.format(wallet);
-  // }
+  String getUserBalance(double balance) {
+    for (var crypto in widget.userCryptoWallet) {
+      balance += crypto.userCryptoBalance;
+      setState(() {});
+    }
+    return formater.format(balance);
+  }
 
   @override
   Widget build(BuildContext context) {
-    int wallet = ref.watch(userBalanceProvider);
     final bool visibility = ref.watch(visibilityProvider);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +71,9 @@ class _WalletHeaderState extends ConsumerState<Header> {
                         style: kWalletBalanceTextStyle,
                       ),
                       Text(
-                        visibility ? '$wallet' : kDefaultHideValues,
+                        visibility
+                            ? getUserBalance(balance)
+                            : kDefaultHideValues,
                         style: kWalletBalanceTextStyle,
                       ),
                     ],

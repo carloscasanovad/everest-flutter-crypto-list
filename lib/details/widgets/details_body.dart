@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/api/crypto_data/model/crypto_data_arguments.dart';
+import '../../shared/model/crypto_data_arguments_model.dart';
 import '../../shared/providers/providers.dart';
 import '../providers/providers.dart';
 import 'convert_crypto_button.dart';
@@ -11,7 +11,7 @@ import 'details_line_chart.dart';
 import 'line_chart_list_view_buttons.dart';
 
 class DetailsBody extends HookConsumerWidget {
-  CryptoDataArguments cryptoDataArguments;
+  CryptoDataArgumentsModel cryptoDataArguments;
   DetailsBody({
     required this.cryptoDataArguments,
   });
@@ -29,7 +29,7 @@ class DetailsBody extends HookConsumerWidget {
               DetailsHeader(cryptoDataArguments: cryptoDataArguments),
               DetailsLineChart(marketChartData: data),
               LineChartListViewButtons(marketChartdata: data),
-              CryptoInformation(marketChartData: data),
+              CryptoInformation(marketChartData: data, cryptoDataArguments: cryptoDataArguments),
               const ConvertCryptoButton(),
             ],
           ),

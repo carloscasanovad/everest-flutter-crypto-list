@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:decimal/decimal.dart';
-import 'package:everest_flutter_crypto_list/shared/api/crypto_data/model/crypto_data_arguments.dart';
+import 'package:everest_flutter_crypto_list/shared/model/crypto_data_arguments_model.dart';
+import 'package:everest_flutter_crypto_list/shared/api/crypto_data/useCase/get_cryptos_data_useCase.dart';
+import 'package:everest_flutter_crypto_list/shared/model/user_wallet_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -14,7 +16,7 @@ import '../providers/providers.dart';
 
 class CryptoListTile extends ConsumerStatefulWidget {
   CryptoDataViewData crypto;
-  int cryptoBalance;
+  double cryptoBalance;
   CryptoListTile({
     Key? key,
     required this.crypto,
@@ -93,13 +95,19 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
-                ref.read(cryptoFilterProvider.notifier).state =
-                    widget.crypto.symbol.toUpperCase();
                 ref.read(cryptoChartProvider.notifier).state = widget.crypto.id;
                 ref.read(cryptoPriceProvider.notifier).state =
                     widget.crypto.current_price;
                 Navigator.of(context).pushNamed('/details',
-                    arguments: CryptoDataArguments(crypto: widget.crypto));
+                    arguments: CryptoDataArgumentsModel(
+                      crypto: widget.crypto,
+                      cryptoBalance: currencyConverter(
+                        widget.cryptoBalance.toDouble(),
+                        widget.crypto.current_price,
+                        widget.crypto.symbol.toUpperCase(),
+                      ),
+                      cryptoValue: widget.cryptoBalance,
+                    ));
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,

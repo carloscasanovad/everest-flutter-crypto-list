@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/shared/model/crypto_data_arguments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -9,9 +10,11 @@ import 'crypto_information_variation_row.dart';
 
 class CryptoInformation extends HookConsumerWidget {
   MarketChartViewData marketChartData;
+  CryptoDataArgumentsModel cryptoDataArguments;
   CryptoInformation({
     Key? key,
     required this.marketChartData,
+    required this.cryptoDataArguments,
   }) : super(key: key);
 
   final formater = NumberFormat("#,##0.00", "pt");
@@ -40,13 +43,13 @@ class CryptoInformation extends HookConsumerWidget {
             description: 'Variação do dia',
             value: dayVariation,
           ),
-          const CryptoInformationRow(description: 'Quantidade', value: '2000'
-              // '${(Decimal.parse(dataCrypto.userBalance.toString()) * dataCrypto.exchange).toStringAsFixed(2)} ${dataCrypto.shortName}',
-              ),
-          const CryptoInformationRow(
+          CryptoInformationRow(
+            description: 'Quantidade',
+            value: cryptoDataArguments.cryptoBalance,
+          ),
+          CryptoInformationRow(
             description: 'Valor',
-            value: '2000',
-            // value: 'R\$ ${formater.format(dataCrypto.userBalance)}',
+            value: 'R\$ ${formater.format(cryptoDataArguments.cryptoValue).toString()}',
           ),
         ],
       ),

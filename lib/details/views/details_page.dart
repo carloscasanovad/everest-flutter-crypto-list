@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:everest_flutter_crypto_list/shared/api/crypto_data/model/crypto_data_arguments.dart';
+import 'package:everest_flutter_crypto_list/shared/model/crypto_data_arguments_model.dart';
 
 import '../../shared/constants/app_colors.dart';
 import '../../shared/constants/app_text_styles.dart';
@@ -9,7 +9,7 @@ import '../providers/providers.dart';
 import '../widgets/details_body.dart';
 
 class DetailsPage extends HookConsumerWidget {
-  CryptoDataArguments cryptoDataArguments;
+  CryptoDataArgumentsModel cryptoDataArguments;
   DetailsPage({
     Key? key,
     required this.cryptoDataArguments,
@@ -28,7 +28,7 @@ class DetailsPage extends HookConsumerWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            ref.read(chartDayProvider.notifier).state = 85;
+            ref.read(chartDayProvider.notifier).state = 84;
             ref.read(chartIndexTappedProvider.notifier).state = 0;
             Navigator.of(context).pop();
           },

@@ -7,18 +7,21 @@ import 'package:everest_flutter_crypto_list/shared/api/crypto_data/useCase/get_c
 import '../api/crypto_data/repository/crypto_data_repository_provider.dart';
 import '../api/crypto_data/viewData/crypto_list_view_data.dart';
 import '../api/market_chart/viewData/market_chart_view_data.dart';
-import '../api/market_chart/viewData/market_filter_view_data.dart';
+import '../model/user_wallet_model.dart';
 
-final cryptoFilterProvider = StateProvider<String>(
-  (ref) => '',
-);
+
 final navBarIndexProvider = StateProvider<int>(
   (ref) => 0,
 );
 final cryptoChartProvider = StateProvider<String>(
   (ref) => '',
 );
-
+final cryptoWalletProvider = FutureProvider<List<UserWalletModel>>((ref) async {
+  return await ref.read(getCryptosDataProvider).getWallet();
+});
+final userBalanceProvider = StateProvider<double>(
+  (ref) => 0,
+);
 final getCryptosDataProvider = Provider((ref) {
   return GetCryptosDataUseCase(
     repository: ref.read(cryptoDataRepositoryProvider),

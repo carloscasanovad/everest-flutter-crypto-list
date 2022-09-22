@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/api/crypto_data/model/crypto_data_arguments.dart';
+import '../../shared/model/crypto_data_arguments_model.dart';
 import '../../shared/constants/app_colors.dart';
 
 class DetailsHeader extends StatelessWidget {
-  CryptoDataArguments cryptoDataArguments;
+  CryptoDataArgumentsModel cryptoDataArguments;
 
   DetailsHeader({
     Key? key,

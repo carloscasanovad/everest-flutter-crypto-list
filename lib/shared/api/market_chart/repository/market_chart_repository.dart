@@ -6,10 +6,8 @@ class MarketChartRepository {
 
   MarketChartRepository({required this.marketChartEndpoint});
 
-  Future<MarketDataResponse> getCryptoMarketData(
-      String crypto) async {
-    final response =
-        await marketChartEndpoint.getCryptoMarketChart(crypto);
+  Future<MarketDataResponse> getCryptoMarketData(String crypto) async {
+    final response = await marketChartEndpoint.getCryptoMarketChart(crypto);
     return MarketDataResponse.fromJson(response.data);
   }
 }
