@@ -6,18 +6,18 @@ import '../model/market_chart_view_data.dart';
 import '../providers/providers.dart';
 
 class LineChartButtonWidget extends HookConsumerWidget {
-  int chartSubList;
-  String dayTitle;
+  int dayRange;
   MarketChartViewData marketChartdata;
   LineChartButtonWidget({
-    required this.chartSubList,
-    required this.dayTitle,
+    required this.dayRange,
     required this.marketChartdata,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int chartIndexTapped = ref.watch(chartIndexTappedProvider);
+    int marketChartLength = marketChartdata.prices.length;
+    int chartSubList = marketChartLength - dayRange - 1;
     return Container(
       margin: const EdgeInsets.only(
         top: 17,
@@ -40,7 +40,7 @@ class LineChartButtonWidget extends HookConsumerWidget {
               marketChartdata.prices[chartSubList][1].toDouble();
         },
         child: Text(
-          dayTitle,
+          '${dayRange}D',
           style: const TextStyle(fontSize: 14),
         ),
       ),

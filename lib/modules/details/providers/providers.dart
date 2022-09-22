@@ -5,7 +5,7 @@ import '../model/market_chart_view_data.dart';
 import '../useCase/get_crypto_market_chart_useCase.dart';
 
 final chartIndexTappedProvider = StateProvider<int>(
-  (ref) => 0,
+  (ref) => 5,
 );
 final chartDayProvider = StateProvider<int>(
   (ref) => 84,

@@ -18,28 +18,23 @@ class LineChartListViewButtons extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           LineChartButtonWidget(
-            dayTitle: '5D',
-            chartSubList: 84,
+            dayRange: 5,
             marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
-            dayTitle: '15D',
-            chartSubList: 44,
+            dayRange: 15,
             marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
-            dayTitle: '30D',
-            chartSubList: 29,
+            dayRange: 30,
             marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
-            dayTitle: '45D',
-            chartSubList: 14,
+            dayRange: 45,
             marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
-            dayTitle: '90D',
-            chartSubList: 4,
+            dayRange: 90,
             marketChartdata: marketChartdata,
           ),
         ],
