@@ -95,6 +95,7 @@ class _CryptoListTileState extends ConsumerState<CryptoListTile> {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
+
                 ref.read(cryptoChartProvider.notifier).state = widget.crypto.id;
                 ref.read(cryptoPriceProvider.notifier).state =
                     widget.crypto.current_price;

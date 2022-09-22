@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/transactions/transactions_page.dart';
 import 'package:everest_flutter_crypto_list/wallet/views/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,10 +17,9 @@ class BottomNavBar extends HookConsumerWidget {
       currentIndex: selectedIndex,
       onTap: (index) {
         ref.read(navBarIndexProvider.notifier).state = index;
-        index == 1
-        //Alterar depois
+        index == 0
             ? Navigator.pushNamed(context, WalletPage.route)
-            : Navigator.pushNamed(context, WalletPage.route);
+            : Navigator.pushNamed(context, TransactionsPage.route);
       },
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(

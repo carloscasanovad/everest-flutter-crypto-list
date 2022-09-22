@@ -2,6 +2,7 @@ import 'package:everest_flutter_crypto_list/shared/model/crypto_data_arguments_m
 import 'package:flutter/material.dart';
 
 import '../../details/views/details_page.dart';
+import '../../transactions/transactions_page.dart';
 import '../../wallet/views/wallet_page.dart';
 
 Route<dynamic>? onGenerateRoute(settings) {
@@ -9,6 +10,12 @@ Route<dynamic>? onGenerateRoute(settings) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         return const WalletPage();
+      },
+    );
+  } else if (settings.name == TransactionsPage.route) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return const TransactionsPage();
       },
     );
   } else if (settings.name == DetailsPage.route) {
