@@ -23,13 +23,20 @@ class CryptoInformation extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // double currentPrice = ref.watch(cryptoPriceProvider);
     List<List<num>> cryptoChartPrices = marketChartData.prices;
-    int marketChartDay = cryptoChartPrices.length - 1 - ref.watch(chartDayProvider);
+    int marketChartDay =
+        cryptoChartPrices.length - 1 - ref.watch(chartDayProvider);
     double currentPrice = cryptoChartPrices[marketChartDay][1].toDouble();
     String cryptoId = cryptoDataArguments.crypto.symbol.toUpperCase();
-    double initialValue =
-        cryptoChartPrices[cryptoChartPrices.length - 1][1].toDouble();
-    double finalValue = cryptoChartPrices[marketChartDay][1].toDouble();
-    double dayVariation = (initialValue / finalValue - 1) * 100;
+
+    double getDayVariation() {
+      double initialValue =
+          cryptoChartPrices[cryptoChartPrices.length - 1][1].toDouble();
+      double finalValue = cryptoChartPrices[marketChartDay][1].toDouble();
+
+      double dayVariation = (initialValue / finalValue - 1) * 100;
+      return dayVariation;
+    }
+
     return Padding(
       padding: const EdgeInsets.only(
         top: 8,
@@ -43,12 +50,11 @@ class CryptoInformation extends HookConsumerWidget {
           ),
           CryptoInformationVariationRow(
             description: 'Variação do dia',
-            value: dayVariation,
+            value: getDayVariation(),
           ),
           CryptoInformationRow(
             description: 'Quantidade',
-            value:
-                '${cryptoDataArguments.cryptoBalance} $cryptoId',
+            value: '${cryptoDataArguments.cryptoBalance} $cryptoId',
           ),
           CryptoInformationRow(
             description: 'Valor',

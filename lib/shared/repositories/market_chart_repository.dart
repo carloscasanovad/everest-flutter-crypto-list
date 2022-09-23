@@ -1,13 +1,14 @@
-import '../api/market_chart/market_chart_endpoint.dart';
+import 'package:everest_flutter_crypto_list/shared/api/base_endpoint.dart';
+
 import '../api/market_chart/model/market_data_response.dart';
 
 class MarketChartRepository {
-  final MarketChartEndpoint marketChartEndpoint;
+  final BaseEndpoint baseEndPoint;
 
-  MarketChartRepository({required this.marketChartEndpoint});
+  MarketChartRepository({required this.baseEndPoint});
 
   Future<MarketDataResponse> getCryptoMarketData(String crypto) async {
-    final response = await marketChartEndpoint.getCryptoMarketChart(crypto);
+    final response = await baseEndPoint.getCryptoMarketChart(crypto);
     return MarketDataResponse.fromJson(response.data);
   }
 }
