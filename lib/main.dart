@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => const MaterialApp(
         title: 'Crypto',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: routes,
+        initialRoute: '/wallet',
+        onGenerateRoute: onGenerateRoute,
       );
 }

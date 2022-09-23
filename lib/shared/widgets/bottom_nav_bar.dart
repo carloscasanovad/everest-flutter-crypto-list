@@ -1,9 +1,10 @@
+import '../../modules/transactions/transactions_page.dart';
+import '../../modules/wallet/views/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../constants/app_colors.dart';
 import '../providers/asset_provider.dart';
 import '../providers/providers.dart';
-import '../routes/routes.dart';
 
 class BottomNavBar extends HookConsumerWidget {
   const BottomNavBar({super.key});
@@ -16,23 +17,9 @@ class BottomNavBar extends HookConsumerWidget {
       currentIndex: selectedIndex,
       onTap: (index) {
         ref.read(navBarIndexProvider.notifier).state = index;
-        index == 1
-            ? Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return routes['/transaction']!(context);
-                  },
-                ),
-              )
-            : Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return routes['/']!(context);
-                  },
-                ),
-              );
+        index == 0
+            ? Navigator.pushNamed(context, WalletPage.route)
+            : Navigator.pushNamed(context, TransactionsPage.route);
       },
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
