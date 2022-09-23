@@ -31,7 +31,8 @@ class DetailsBody extends HookConsumerWidget {
               CryptoInformation(
                   marketChartData: data,
                   cryptoDataArguments: cryptoDataArguments),
-              const ConvertCryptoButton(),
+              ConvertCryptoButton(
+                  cryptoDataArguments: cryptoDataArguments),
             ],
           ),
         );

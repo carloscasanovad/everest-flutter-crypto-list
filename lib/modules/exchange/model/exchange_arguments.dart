@@ -1,10 +1,10 @@
 import '../../wallet/model/crypto_data_view_data.dart';
 
-class CryptoDataArguments {
+class ExchangeArguments {
   CryptoDataViewData crypto;
   double cryptoBalance;
   double cryptoValue;
-  CryptoDataArguments({
+  ExchangeArguments({
     required this.crypto,
     required this.cryptoBalance,
     required this.cryptoValue,

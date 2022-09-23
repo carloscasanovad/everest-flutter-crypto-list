@@ -28,7 +28,7 @@ class CryptoListTile extends HookConsumerWidget {
         DetailsPage.route,
         arguments: CryptoDataArguments(
           crypto: crypto,
-          cryptoBalance: cryptoBalanceExchanged.toStringAsFixed(2),
+          cryptoBalance: cryptoBalanceExchanged,
           cryptoValue: cryptoBalance,
         ),
       );
