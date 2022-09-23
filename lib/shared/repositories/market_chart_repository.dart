@@ -1,6 +1,6 @@
 import 'package:everest_flutter_crypto_list/shared/api/base_endpoint.dart';
 
-import '../api/market_chart/model/market_data_response.dart';
+import '../api/model/market_data_response.dart';
 
 class MarketChartRepository {
   final BaseEndpoint baseEndPoint;
