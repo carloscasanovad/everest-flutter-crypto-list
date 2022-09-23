@@ -4,9 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
-import '../../../shared/model/crypto_data_arguments.dart';
-import '../../../shared/model/crypto_data_view_data.dart';
-import '../../details/providers/providers.dart';
+import '../../details/model/crypto_data_arguments.dart';
+import '../model/crypto_data_view_data.dart';
 import '../providers/providers.dart';
 
 class CryptoListTile extends HookConsumerWidget {
@@ -72,8 +71,8 @@ class CryptoListTile extends HookConsumerWidget {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
-                ref.read(cryptoPriceProvider.notifier).state =
-                    crypto.current_price;
+                // ref.read(cryptoPriceProvider.notifier).state =
+                //     crypto.current_price;
                 Navigator.of(context).pushNamed(
                   DetailsPage.route,
                   arguments: CryptoDataArguments(

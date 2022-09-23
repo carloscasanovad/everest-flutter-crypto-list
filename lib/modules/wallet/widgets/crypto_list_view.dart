@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../shared/model/crypto_data_view_data.dart';
-import '../../../shared/model/user_wallet_model.dart';
-import '../../../shared/providers/providers.dart';
+import '../model/crypto_data_view_data.dart';
+import '../model/user_wallet_model.dart';
+import '../providers/providers.dart';
 import 'crypto_list_tile.dart';
 
 class CryptoListView extends HookConsumerWidget {

@@ -1,4 +1,4 @@
-import '../api/crypto_data/model/crypto_data_response.dart';
+import '../../../shared/api/crypto_data/model/crypto_data_response.dart';
 import '../model/crypto_data_view_data.dart';
 import '../model/crypto_list_view_data.dart';
 

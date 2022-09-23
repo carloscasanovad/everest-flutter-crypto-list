@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
-import '../../../shared/model/crypto_data_arguments.dart';
+import '../model/crypto_data_arguments.dart';
 import '../providers/providers.dart';
 import '../widgets/details_body.dart';
 

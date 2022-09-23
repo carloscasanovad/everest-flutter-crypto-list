@@ -1,4 +1,4 @@
-import '../../../shared/model/crypto_data_arguments.dart';
+import '../model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -21,9 +21,10 @@ class CryptoInformation extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double currentPrice = ref.watch(cryptoPriceProvider);
-    int marketChartDay = ref.watch(chartDayProvider);
+    // double currentPrice = ref.watch(cryptoPriceProvider);
     List<List<num>> cryptoChartPrices = marketChartData.prices;
+    int marketChartDay = cryptoChartPrices.length - 1 - ref.watch(chartDayProvider);
+    double currentPrice = cryptoChartPrices[marketChartDay][1].toDouble();
     String cryptoId = cryptoDataArguments.crypto.symbol.toUpperCase();
     double initialValue =
         cryptoChartPrices[cryptoChartPrices.length - 1][1].toDouble();

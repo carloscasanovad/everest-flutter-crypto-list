@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
-import '../../../shared/model/user_wallet_model.dart';
+import '../model/user_wallet_model.dart';
 import '../providers/providers.dart';
 
 class Header extends ConsumerStatefulWidget {

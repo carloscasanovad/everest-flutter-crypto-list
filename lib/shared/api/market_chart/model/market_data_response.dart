@@ -4,7 +4,6 @@ part 'market_data_response.g.dart';
 
 @JsonSerializable()
 class MarketDataResponse {
-  // ignore: non_constant_identifier_names
   final List<List<num>> prices;
 
   MarketDataResponse(this.prices);

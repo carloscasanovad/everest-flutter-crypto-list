@@ -1,7 +1,7 @@
 import '../../modules/details/views/details_page.dart';
 import '../../modules/transactions/transactions_page.dart';
 import '../../modules/wallet/views/wallet_page.dart';
-import '../model/crypto_data_arguments.dart';
+import '../../modules/details/model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic>? onGenerateRoute(settings) {

@@ -36,8 +36,8 @@ class LineChartButtonWidget extends HookConsumerWidget {
         onPressed: () {
           ref.read(chartIndexTappedProvider.notifier).state = chartSubList;
           ref.read(chartDayProvider.notifier).state = chartSubList;
-          ref.read(cryptoPriceProvider.notifier).state =
-              marketChartdata.prices[chartSubList][1].toDouble();
+          // ref.read(cryptoPriceProvider.notifier).state =
+          //     marketChartdata.prices[chartSubList][1].toDouble();
         },
         child: Text(
           '${dayRange}D',

@@ -11,9 +11,9 @@ final chartDayProvider = StateProvider<int>(
   (ref) => 84,
 );
 
-final cryptoPriceProvider = StateProvider<double>(
-  (ref) => 0,
-);
+// final cryptoPriceProvider = StateProvider<double>(
+//   (ref) => 0,
+// );
 
 final getMarketChartDataProvider = Provider((ref) {
   return GetCryptoMarketChartUseCase(

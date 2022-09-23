@@ -1,4 +1,4 @@
-import 'crypto_data_view_data.dart';
+import '../../wallet/model/crypto_data_view_data.dart';
 
 class CryptoDataArguments {
   CryptoDataViewData crypto;
