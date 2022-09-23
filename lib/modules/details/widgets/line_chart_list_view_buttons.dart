@@ -19,23 +19,18 @@ class LineChartListViewButtons extends StatelessWidget {
         children: [
           LineChartButtonWidget(
             dayRange: 5,
-            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayRange: 15,
-            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayRange: 30,
-            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayRange: 45,
-            marketChartdata: marketChartdata,
           ),
           LineChartButtonWidget(
             dayRange: 90,
-            marketChartdata: marketChartdata,
           ),
         ],
       ),

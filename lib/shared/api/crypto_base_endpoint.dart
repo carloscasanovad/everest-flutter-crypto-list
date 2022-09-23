@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
-class BaseEndpoint {
+class CryptoBaseEndpoint {
   final Dio _dio;
 
-  BaseEndpoint(this._dio);
+  CryptoBaseEndpoint(this._dio);
 
   Future<Response> getCryptosData() {
     return _dio.get(

@@ -8,12 +8,8 @@ final chartIndexTappedProvider = StateProvider<int>(
   (ref) => 5,
 );
 final chartDayProvider = StateProvider<int>(
-  (ref) => 84,
+  (ref) => 5,
 );
-
-// final cryptoPriceProvider = StateProvider<double>(
-//   (ref) => 0,
-// );
 
 final getMarketChartDataProvider = Provider((ref) {
   return GetCryptoMarketChartUseCase(

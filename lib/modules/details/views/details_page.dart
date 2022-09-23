@@ -26,8 +26,8 @@ class DetailsPage extends HookConsumerWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            ref.read(chartDayProvider.notifier).state = 84;
-            ref.read(chartIndexTappedProvider.notifier).state = 0;
+            ref.read(chartDayProvider.notifier).state = 5;
+            ref.read(chartIndexTappedProvider.notifier).state = 5;
             Navigator.of(context).pop();
           },
           icon: const Icon(
