@@ -17,21 +17,11 @@ class LineChartListViewButtons extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          LineChartButtonWidget(
-            dayRange: 5,
-          ),
-          LineChartButtonWidget(
-            dayRange: 15,
-          ),
-          LineChartButtonWidget(
-            dayRange: 30,
-          ),
-          LineChartButtonWidget(
-            dayRange: 45,
-          ),
-          LineChartButtonWidget(
-            dayRange: 90,
-          ),
+          LineChartButtonWidget(dayRange: 5),
+          LineChartButtonWidget(dayRange: 15),
+          LineChartButtonWidget(dayRange: 30),
+          LineChartButtonWidget(dayRange: 45),
+          LineChartButtonWidget(dayRange: 90),
         ],
       ),
     );
