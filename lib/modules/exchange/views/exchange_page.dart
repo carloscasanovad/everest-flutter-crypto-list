@@ -7,6 +7,8 @@ import 'package:everest_flutter_crypto_list/modules/exchange/widgets/dropdown_bu
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
+import '../../../shared/widgets/default_error_widget.dart';
+import '../../../shared/widgets/default_loading_spinner.dart';
 import '../../wallet/model/crypto_data_view_data.dart';
 import '../../wallet/providers/providers.dart';
 import '../widgets/bottom_sheet_widget.dart';
@@ -111,12 +113,11 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
             ),
           );
         },
-        error: (error, stackTrace) => Center(
-          child: Text('$error'),
-        ),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        error: (error, stackTrace) {
+          debugPrintStack(stackTrace: stackTrace);
+          return const DefaultErrorWidget();
+        },
+        loading: () => const DefaultLoadingSpinner(),
       ),
       bottomSheet: const BottomSheetWidget(),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../shared/widgets/default_error_widget.dart';
+import '../../../shared/widgets/default_loading_spinner.dart';
 import '../model/crypto_data_view_data.dart';
 import '../model/user_wallet_model.dart';
 import '../providers/providers.dart';
@@ -37,10 +40,11 @@ class CryptoListView extends HookConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => Center(child: Text('$error')),
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      error: (error, stackTrace) {
+        debugPrintStack(stackTrace: stackTrace);
+        return const DefaultErrorWidget();
+      },
+      loading: () => const DefaultLoadingSpinner(),
     );
   }
 }

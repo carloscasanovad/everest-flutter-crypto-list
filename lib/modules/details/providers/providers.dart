@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../shared/repositories/market_chart_repository_provider.dart';
 import '../model/market_chart_view_data.dart';
+import '../repositories/market_chart_repository_provider.dart';
 import '../useCase/get_crypto_market_chart_useCase.dart';
 
 final chartIndexTappedProvider = StateProvider<int>(
