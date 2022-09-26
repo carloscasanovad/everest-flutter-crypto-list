@@ -29,8 +29,6 @@ class ExchangePage extends ConsumerStatefulWidget {
 class _ExchangePageState extends ConsumerState<ExchangePage> {
   @override
   Widget build(BuildContext context) {
-    String userCyptoBalance =
-        widget.exchangeArguments.cryptoBalance.toStringAsFixed(6);
     String cryptoSymbol = widget.exchangeArguments.crypto.symbol.toUpperCase();
     String cryptoToExchange = widget.exchangeArguments.crypto.symbol;
     String cryptoLogo = widget.exchangeArguments.crypto.image;
@@ -67,7 +65,7 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: UserBalance(
-            userCyptoBalance: userCyptoBalance,
+            userCryptoBalance: widget.exchangeArguments.cryptoBalance,
             cryptoSymbol: cryptoSymbol,
           ),
         ),
@@ -120,7 +118,7 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
           child: CircularProgressIndicator(),
         ),
       ),
-      bottomSheet: BottomSheetWidget(),
+      bottomSheet: const BottomSheetWidget(),
     );
   }
 }

@@ -13,6 +13,7 @@ class BottomSheetWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     CryptoDataViewData cryptoToConvert = ref.watch(cryptoToConvertDataProvider);
+    bool ableToExchange = ref.watch(ableToExchangeProvider);
     double cryptoExchanged = ref.watch(cryptoExchangedProvider);
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -57,15 +58,13 @@ class BottomSheetWidget extends HookConsumerWidget {
           ),
           FloatingActionButton(
             isExtended: true,
-            backgroundColor: kDefaultRed,
+            backgroundColor:
+                ableToExchange ? kDefaultRed : const Color(0xffc5c5c5),
             child: const Icon(
               Icons.arrow_forward_ios,
               size: 18,
             ),
-            onPressed: () {
-              print(cryptoExchanged);
-              print(cryptoToConvert.current_price);
-            },
+            onPressed: () {},
           ),
         ],
       ),

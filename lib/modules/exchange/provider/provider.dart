@@ -16,3 +16,7 @@ final cryptoToConvertDataProvider = StateProvider<CryptoDataViewData>(
     market_cap_change_percentage_24h: 0,
   ),
 );
+
+final ableToExchangeProvider = StateProvider<bool>(
+  (ref) => false,
+);

@@ -1,16 +1,19 @@
+import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
 import 'package:flutter/material.dart';
 
 class UserBalance extends StatelessWidget {
-  String userCyptoBalance;
+  double userCryptoBalance;
   String cryptoSymbol;
+
   UserBalance({
     Key? key,
-    required this.userCyptoBalance,
+    required this.userCryptoBalance,
     required this.cryptoSymbol,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String userCyptoBalance = userCryptoBalance.toStringAsFixed(6);
     return PreferredSize(
       preferredSize: const Size.fromHeight(50),
       child: Container(

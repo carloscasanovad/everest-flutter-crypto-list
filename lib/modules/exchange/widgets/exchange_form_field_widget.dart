@@ -45,7 +45,6 @@ class _ExchangeFormFieldWidgetState
             fontSize: 28,
           ),
           onTap: () {
-            print(cryptoData.id);
             if (cryptoData.id == '') {
               ref.read(cryptoToConvertDataProvider.notifier).state =
                   widget.cryptoList[0];
@@ -59,9 +58,14 @@ class _ExchangeFormFieldWidgetState
                   formattedValue.toDouble() * cryptoPrice.toDouble();
               ref.read(cryptoExchangedProvider.notifier).state = moneyToChange;
               showMoneyHelper = true;
+              ref.read(ableToExchangeProvider.notifier).state = true;
               if (formattedValue > Decimal.parse(userCyptoBalance.toString())) {
                 ref.read(cryptoExchangedProvider.notifier).state = 0;
+                ref.read(ableToExchangeProvider.notifier).state = false;
                 showMoneyHelper = false;
+              }
+              if (formattedValue.toDouble() == 0) {
+                ref.read(ableToExchangeProvider.notifier).state = false;
               }
             }
             setState(() {});
