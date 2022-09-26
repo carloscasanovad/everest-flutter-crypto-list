@@ -1,13 +1,20 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'package:everest_flutter_crypto_list/modules/exchange/model/exchange_arguments.dart';
-import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_list_view_data.dart';
+import 'package:everest_flutter_crypto_list/modules/exchange/widgets/dropdown_buttons.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../../wallet/model/crypto_data_view_data.dart';
 import '../../wallet/providers/providers.dart';
+import '../provider/provider.dart';
+import '../widgets/bottom_sheet_widget.dart';
+import '../widgets/exchange_form_field_widget.dart';
+import '../widgets/user_balance.dart';
 
 class ExchangePage extends ConsumerStatefulWidget {
   static const route = '/exchange';
@@ -29,6 +36,8 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
         widget.exchangeArguments.cryptoBalance.toStringAsFixed(6);
     String cryptoSymbol = widget.exchangeArguments.crypto.symbol.toUpperCase();
     String cryptoToExchange = widget.exchangeArguments.crypto.symbol;
+    String cryptoLogo = widget.exchangeArguments.crypto.image;
+
     final cryptosData = ref.watch(cryptosDataProvider);
     return Scaffold(
       appBar: AppBar(
@@ -50,37 +59,9 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
         ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            height: 50,
-            decoration: const BoxDecoration(
-              color: Color(0xffececec),
-              border: Border(
-                top: BorderSide(
-                  color: Color(0xffc5c5c5),
-                  width: 1,
-                ),
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Saldo disponível:',
-                  style: TextStyle(
-                    color: Color(0xff757680),
-                    fontSize: 17,
-                  ),
-                ),
-                Text(
-                  '$userCyptoBalance $cryptoSymbol',
-                  style: const TextStyle(
-                    color: Color(0xff000000),
-                    fontSize: 17,
-                  ),
-                ),
-              ],
-            ),
+          child: UserBalance(
+            userCyptoBalance: userCyptoBalance,
+            cryptoSymbol: cryptoSymbol,
           ),
         ),
       ),
@@ -91,17 +72,38 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
               .toList();
           String selectedCrypto = cryptoList[0].symbol.toUpperCase();
 
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('Quando você gostaria de converter?'),
-              DropDownItems(
-                cryptoSymbol: cryptoSymbol,
-                cryptoList: cryptoList,
-                selectedCrypto: selectedCrypto,
-              )
-            ],
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+              horizontal: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Quanto você gostaria de converter?',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                DropDownButtons(
+                  cryptoSymbol: cryptoSymbol,
+                  cryptoList: cryptoList,
+                  selectedCrypto: selectedCrypto,
+                  cryptoLogo: cryptoLogo,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                ExchangeFormFieldWidget(
+                  exchangeArguments: widget.exchangeArguments,
+                ),
+              ],
+            ),
           );
         },
         error: (error, stackTrace) => Center(
@@ -111,80 +113,7 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
           child: CircularProgressIndicator(),
         ),
       ),
-    );
-  }
-}
-
-class DropDownItems extends StatefulWidget {
-  String cryptoSymbol;
-  List<CryptoDataViewData> cryptoList;
-  String selectedCrypto;
-  DropDownItems({
-    Key? key,
-    required this.cryptoSymbol,
-    required this.cryptoList,
-    required this.selectedCrypto,
-  }) : super(key: key);
-
-  @override
-  State<DropDownItems> createState() => _DropDownItemsState();
-}
-
-class _DropDownItemsState extends State<DropDownItems> {
-  List<DropdownMenuItem> getCryptoDropdown(
-      List<CryptoDataViewData> cryptoList) {
-    List<DropdownMenuItem> cryptoDropdown = cryptoList
-        .map((crypto) => DropdownMenuItem(
-              value: crypto.symbol.toUpperCase(),
-              child: Row(
-                children: [
-                  Image.network(
-                    crypto.image,
-                    height: 24,
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    crypto.symbol.toUpperCase(),
-                  ),
-                ],
-              ),
-            ))
-        .toList();
-    return cryptoDropdown;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        DropdownButton(
-          value: widget.cryptoSymbol,
-          items: [
-            DropdownMenuItem(
-              value: widget.cryptoSymbol,
-              child: Row(
-                children: [
-                  Text(widget.cryptoSymbol),
-                ],
-              ),
-            ),
-          ],
-          onChanged: (value) {},
-        ),
-        DropdownButton(
-          value: widget.selectedCrypto,
-          items: getCryptoDropdown(widget.cryptoList),
-          menuMaxHeight: 300,
-          onChanged: (value) {
-            setState(() {
-              widget.selectedCrypto = value;
-            });
-          },
-        )
-      ],
+      bottomSheet: BottomSheetWidget(),
     );
   }
 }
