@@ -1,8 +1,6 @@
-import 'package:decimal/decimal.dart';
+import 'package:everest_flutter_crypto_list/modules/exchange/provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import 'package:everest_flutter_crypto_list/modules/exchange/model/exchange_arguments.dart';
 import 'package:everest_flutter_crypto_list/modules/exchange/widgets/dropdown_buttons.dart';
@@ -11,7 +9,6 @@ import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../../wallet/model/crypto_data_view_data.dart';
 import '../../wallet/providers/providers.dart';
-import '../provider/provider.dart';
 import '../widgets/bottom_sheet_widget.dart';
 import '../widgets/exchange_form_field_widget.dart';
 import '../widgets/user_balance.dart';
@@ -49,6 +46,16 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
         ),
         leading: IconButton(
           onPressed: () {
+            ref.watch(cryptoExchangedProvider.notifier).state = 0;
+            ref.watch(cryptoToConvertDataProvider.notifier).state ==
+                CryptoDataViewData(
+                  id: '',
+                  symbol: '',
+                  name: '',
+                  image: '',
+                  current_price: 0,
+                  market_cap_change_percentage_24h: 0,
+                );
             Navigator.of(context).pop();
           },
           icon: const Icon(
@@ -71,7 +78,6 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
               .where((crypto) => crypto.symbol != cryptoToExchange)
               .toList();
           String selectedCrypto = cryptoList[0].symbol.toUpperCase();
-
           return Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 20,
@@ -101,6 +107,7 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
                 ),
                 ExchangeFormFieldWidget(
                   exchangeArguments: widget.exchangeArguments,
+                  cryptoList: cryptoList,
                 ),
               ],
             ),

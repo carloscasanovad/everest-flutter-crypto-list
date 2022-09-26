@@ -4,15 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
+
 import '../../../shared/constants/app_colors.dart';
 import '../model/exchange_arguments.dart';
 import '../provider/provider.dart';
 
 class ExchangeFormFieldWidget extends ConsumerStatefulWidget {
   ExchangeArguments exchangeArguments;
+  List<CryptoDataViewData> cryptoList;
   ExchangeFormFieldWidget({
     Key? key,
     required this.exchangeArguments,
+    required this.cryptoList,
   }) : super(key: key);
 
   @override
@@ -28,6 +32,7 @@ class _ExchangeFormFieldWidgetState
 
   @override
   Widget build(BuildContext context) {
+    CryptoDataViewData cryptoData = ref.watch(cryptoToConvertDataProvider);
     double userCyptoBalance = widget.exchangeArguments.cryptoBalance;
     String cryptoSymbol = widget.exchangeArguments.crypto.symbol.toUpperCase();
     Decimal cryptoPrice =
@@ -39,6 +44,13 @@ class _ExchangeFormFieldWidgetState
           style: const TextStyle(
             fontSize: 28,
           ),
+          onTap: () {
+            print(cryptoData.id);
+            if (cryptoData.id == '') {
+              ref.read(cryptoToConvertDataProvider.notifier).state =
+                  widget.cryptoList[0];
+            }
+          },
           onChanged: (value) {
             if (value != '') {
               Decimal formattedValue =

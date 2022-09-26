@@ -45,7 +45,7 @@ class BottomSheetWidget extends HookConsumerWidget {
                 height: 10,
               ),
               Text(
-                cryptoExchanged > 0
+                cryptoExchanged != 0
                     ? '${(cryptoExchanged / cryptoToConvert.current_price).toStringAsFixed(6)} ${cryptoToConvert.symbol.toUpperCase()}'
                     : '',
                 style: const TextStyle(
