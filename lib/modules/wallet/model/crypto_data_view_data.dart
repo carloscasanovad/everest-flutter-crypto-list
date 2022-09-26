@@ -2,7 +2,7 @@
 
 class CryptoDataViewData {
   final String id;
-  final String symbol;
+  late final String symbol;
   final String name;
   final String image;
   final double current_price;
