@@ -23,7 +23,21 @@ class CryptoListTile extends HookConsumerWidget {
     bool visibility = ref.watch(visibilityProvider);
     String cryptoSymbol = (crypto.symbol).toUpperCase();
 
+    void navigateToDetails() {
+      Navigator.of(context).pushNamed(
+        DetailsPage.route,
+        arguments: CryptoDataArguments(
+          crypto: crypto,
+          cryptoBalance: cryptoBalanceExchanged,
+          cryptoValue: cryptoBalance,
+        ),
+      );
+    }
+
     return ListTile(
+      onTap: () {
+        navigateToDetails();
+      },
       contentPadding: const EdgeInsets.only(left: 15),
       title: Text(
         crypto.name,
@@ -31,7 +45,7 @@ class CryptoListTile extends HookConsumerWidget {
       ),
       subtitle: Text(
         crypto.symbol.toUpperCase(),
-        style: kCryptoCardSubtitleStyle,
+        style: kDefaultParagraphStyle,
       ),
       leading: CircleAvatar(
         backgroundColor: const Color(0x00ffffff),
@@ -71,16 +85,7 @@ class CryptoListTile extends HookConsumerWidget {
             alignment: Alignment.center,
             child: IconButton(
               onPressed: () {
-                // ref.read(cryptoPriceProvider.notifier).state =
-                //     crypto.current_price;
-                Navigator.of(context).pushNamed(
-                  DetailsPage.route,
-                  arguments: CryptoDataArguments(
-                    crypto: crypto,
-                    cryptoBalance: cryptoBalanceExchanged.toStringAsFixed(2),
-                    cryptoValue: cryptoBalance,
-                  ),
-                );
+                navigateToDetails();
               },
               icon: const Icon(
                 Icons.arrow_forward_ios,

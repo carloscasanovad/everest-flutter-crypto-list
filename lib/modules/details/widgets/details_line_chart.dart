@@ -18,15 +18,13 @@ class DetailsLineChart extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<List<num>> spots = marketChartData.prices;
-    int marketChartDay = ref.watch(chartDayProvider);
-    // double currentPrice = ref.watch(cryptoPriceProvider);
-    double currentPrice = spots[marketChartDay][1].toDouble();
-    // print(test);
+    int marketChartDay = spots.length - ref.watch(chartDayProvider);
+    double selectedDayPrice = spots[marketChartDay][1].toDouble();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'R\$ ${formater.format(currentPrice)}',
+          'R\$ ${formater.format(selectedDayPrice)}',
           style: const TextStyle(
             fontSize: 32,
             color: kDefaultBlack,

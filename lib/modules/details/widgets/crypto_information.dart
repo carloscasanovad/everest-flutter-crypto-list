@@ -21,19 +21,15 @@ class CryptoInformation extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // double currentPrice = ref.watch(cryptoPriceProvider);
     List<List<num>> cryptoChartPrices = marketChartData.prices;
-    int marketChartDay =
-        cryptoChartPrices.length - 1 - ref.watch(chartDayProvider);
-    double currentPrice = cryptoChartPrices[marketChartDay][1].toDouble();
     String cryptoId = cryptoDataArguments.crypto.symbol.toUpperCase();
+    int marketChartDay = cryptoChartPrices.length - ref.watch(chartDayProvider);
+    double selectedDayPrice = cryptoChartPrices[marketChartDay][1].toDouble();
 
     double getDayVariation() {
       double initialValue =
           cryptoChartPrices[cryptoChartPrices.length - 1][1].toDouble();
-      double finalValue = cryptoChartPrices[marketChartDay][1].toDouble();
-
-      double dayVariation = (initialValue / finalValue - 1) * 100;
+      double dayVariation = (initialValue / selectedDayPrice - 1) * 100;
       return dayVariation;
     }
 
@@ -46,7 +42,7 @@ class CryptoInformation extends HookConsumerWidget {
         children: [
           CryptoInformationRow(
             description: 'Preço atual',
-            value: 'R\$ ${formater.format(currentPrice)}',
+            value: 'R\$ ${formater.format(selectedDayPrice)}',
           ),
           CryptoInformationVariationRow(
             description: 'Variação do dia',
@@ -54,7 +50,8 @@ class CryptoInformation extends HookConsumerWidget {
           ),
           CryptoInformationRow(
             description: 'Quantidade',
-            value: '${cryptoDataArguments.cryptoBalance} $cryptoId',
+            value:
+                '${cryptoDataArguments.cryptoBalance.toStringAsFixed(2)} $cryptoId',
           ),
           CryptoInformationRow(
             description: 'Valor',

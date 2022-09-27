@@ -1,4 +1,7 @@
+import 'package:everest_flutter_crypto_list/modules/exchange/views/exchange_page.dart';
+
 import '../../modules/details/views/details_page.dart';
+import '../../modules/exchange/model/exchange_arguments.dart';
 import '../../modules/transactions/transactions_page.dart';
 import '../../modules/wallet/views/wallet_page.dart';
 import '../../modules/details/model/crypto_data_arguments.dart';
@@ -22,6 +25,13 @@ Route<dynamic>? onGenerateRoute(settings) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         return DetailsPage(cryptoDataArguments: arguments);
+      },
+    );
+  } else if (settings.name == ExchangePage.route) {
+    final arguments = settings.arguments as ExchangeArguments;
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return ExchangePage(exchangeArguments: arguments,);
       },
     );
   }

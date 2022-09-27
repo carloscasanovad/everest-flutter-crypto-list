@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
+import '../../shared/widgets/default_error_widget.dart';
 
 class TransactionsPage extends HookConsumerWidget {
   const TransactionsPage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class TransactionsPage extends HookConsumerWidget {
         ),
       ),
       body: const SafeArea(
-        child: Center(child: Text('')),
+        child: DefaultErrorWidget(),
       ),
       bottomNavigationBar: const BottomNavBar(),
     );

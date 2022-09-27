@@ -1,9 +1,9 @@
-import 'package:everest_flutter_crypto_list/shared/api/base_endpoint.dart';
+import 'package:everest_flutter_crypto_list/shared/api/crypto_base_endpoint.dart';
 
-import '../api/crypto_data/model/crypto_data_response.dart';
+import '../../../shared/api/model/crypto_data_response.dart';
 
 class CryptoDataRepository {
-  final BaseEndpoint baseEndpoint;
+  final CryptoBaseEndpoint baseEndpoint;
 
   CryptoDataRepository({
     required this.baseEndpoint,
@@ -12,7 +12,7 @@ class CryptoDataRepository {
   Future<List<CryptoDataResponse>> getAllCryptosData() async {
     final response = await baseEndpoint.getCryptosData();
     return List<CryptoDataResponse>.from(
-      response.data.map((item) => CryptoDataResponse.fromMap(item)),
+      response.data.map((item) => CryptoDataResponse.fromJson(item)),
     );
   }
 }

@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:everest_flutter_crypto_list/modules/wallet/mapper/crypto_data_mapper.dart';
 
-import '../../../shared/repositories/crypto_data_repository.dart';
 import '../model/crypto_list_view_data.dart';
 import '../model/user_wallet_model.dart';
+import '../repositories/crypto_data_repository.dart';
 
 class GetCryptosDataUseCase {
   final CryptoDataRepository repository;
