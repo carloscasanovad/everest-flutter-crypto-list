@@ -18,7 +18,7 @@ class DetailsLineChart extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<List<num>> spots = marketChartData.prices;
-    int marketChartDay = spots.length - 1 - ref.watch(chartDayProvider);
+    int marketChartDay = spots.length - ref.watch(chartDayProvider);
     double selectedDayPrice = spots[marketChartDay][1].toDouble();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

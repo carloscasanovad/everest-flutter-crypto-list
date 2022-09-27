@@ -53,17 +53,17 @@ class _ExchangeFormFieldWidgetState
           },
           onChanged: (value) {
             if (value != '') {
+              showMoneyHelper = true;
               Decimal formattedValue =
                   Decimal.parse(value.replaceAll(RegExp(r','), '.'));
               moneyToChange =
                   formattedValue.toDouble() * cryptoPrice.toDouble();
               ref.read(cryptoExchangedProvider.notifier).state = moneyToChange;
-              showMoneyHelper = true;
               ref.read(ableToExchangeProvider.notifier).state = true;
               if (formattedValue > Decimal.parse(userCyptoBalance.toString())) {
+                showMoneyHelper = false;
                 ref.read(cryptoExchangedProvider.notifier).state = 0;
                 ref.read(ableToExchangeProvider.notifier).state = false;
-                showMoneyHelper = false;
               }
               if (formattedValue.toDouble() == 0) {
                 ref.read(ableToExchangeProvider.notifier).state = false;
@@ -74,9 +74,7 @@ class _ExchangeFormFieldWidgetState
           keyboardType: TextInputType.number,
           inputFormatters: [
             FilteringTextInputFormatter.allow(
-              RegExp(
-                r'^(\d+)?\,?\d{0,6}',
-              ),
+              RegExp(r'^(\d+)?\,?\d{0,6}'),
             )
           ],
           decoration: InputDecoration(

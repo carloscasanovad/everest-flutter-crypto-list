@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
+import '../model/exchange_arguments.dart';
 
 class UserBalance extends StatelessWidget {
-  double userCryptoBalance;
-  String cryptoSymbol;
+  ExchangeArguments exchangeArguments;
 
   UserBalance({
     Key? key,
-    required this.userCryptoBalance,
-    required this.cryptoSymbol,
+    required this.exchangeArguments,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String userCyptoBalance = userCryptoBalance.toStringAsFixed(6);
+    String userCyptoBalance =
+        exchangeArguments.cryptoBalance.toStringAsFixed(6);
+    String cryptoSymbol = exchangeArguments.crypto.symbol.toUpperCase();
     return PreferredSize(
       preferredSize: const Size.fromHeight(50),
       child: Container(

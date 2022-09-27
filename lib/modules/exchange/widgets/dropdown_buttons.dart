@@ -1,19 +1,19 @@
-import 'package:everest_flutter_crypto_list/shared/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:everest_flutter_crypto_list/shared/constants/app_colors.dart';
+
 import '../../wallet/model/crypto_data_view_data.dart';
+import '../model/exchange_arguments.dart';
 import '../provider/provider.dart';
 
 class DropDownButtons extends ConsumerStatefulWidget {
-  String cryptoLogo;
-  String cryptoSymbol;
+  ExchangeArguments exchangeArguments;
   List<CryptoDataViewData> cryptoList;
   String selectedCrypto;
   DropDownButtons({
     Key? key,
-    required this.cryptoLogo,
-    required this.cryptoSymbol,
+    required this.exchangeArguments,
     required this.cryptoList,
     required this.selectedCrypto,
   }) : super(key: key);
@@ -49,24 +49,26 @@ class _DropDownItemsState extends ConsumerState<DropDownButtons> {
 
   @override
   Widget build(BuildContext context) {
+    String cryptoSymbol = widget.exchangeArguments.crypto.symbol.toUpperCase();
+    String cryptoLogo = widget.exchangeArguments.crypto.image;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         DropdownButton(
-          value: widget.cryptoSymbol,
+          value: cryptoSymbol,
           items: [
             DropdownMenuItem(
-              value: widget.cryptoSymbol,
+              value: cryptoSymbol,
               child: Row(
                 children: [
                   Image.network(
-                    widget.cryptoLogo,
+                    cryptoLogo,
                     height: 24,
                   ),
                   const SizedBox(
                     width: 8,
                   ),
-                  Text(widget.cryptoSymbol),
+                  Text(cryptoSymbol),
                 ],
               ),
             ),
@@ -88,7 +90,7 @@ class _DropDownItemsState extends ConsumerState<DropDownButtons> {
               ref.read(cryptoToConvertDataProvider.notifier).state =
                   widget.cryptoList.firstWhere(
                       (crypto) => crypto.symbol.toUpperCase() == value!);
-            },);
+            });
           },
         )
       ],
