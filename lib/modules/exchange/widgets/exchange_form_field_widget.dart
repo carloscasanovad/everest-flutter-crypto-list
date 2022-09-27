@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
 
 import '../../../shared/constants/app_colors.dart';
+import '../../../shared/constants/app_text_styles.dart';
 import '../model/exchange_arguments.dart';
 import '../provider/provider.dart';
 
@@ -81,12 +82,7 @@ class _ExchangeFormFieldWidgetState
           decoration: InputDecoration(
             prefixIcon: Text(
               '$cryptoSymbol ',
-              style: const TextStyle(
-                fontSize: 28,
-                color: Color(
-                  0xff9599A6,
-                ),
-              ),
+              style: kHintInputFormTextStyle,
             ),
             isDense: true,
             prefixIconConstraints: const BoxConstraints(
@@ -94,12 +90,7 @@ class _ExchangeFormFieldWidgetState
               minHeight: 0,
             ),
             hintText: '0,00',
-            hintStyle: const TextStyle(
-              fontSize: 28,
-              color: Color(
-                0xff9599A6,
-              ),
-            ),
+            hintStyle: kHintInputFormTextStyle,
           ),
         ),
         const SizedBox(

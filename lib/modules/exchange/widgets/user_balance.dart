@@ -1,5 +1,7 @@
-import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/constants/app_colors.dart';
+import '../../../shared/constants/app_text_styles.dart';
 
 class UserBalance extends StatelessWidget {
   double userCryptoBalance;
@@ -20,10 +22,10 @@ class UserBalance extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12),
         height: 50,
         decoration: const BoxDecoration(
-          color: Color(0xffececec),
+          color: kDefaultMiddleGrey,
           border: Border(
             top: BorderSide(
-              color: Color(0xffc5c5c5),
+              color: kDefaultSoftGrey,
               width: 1,
             ),
           ),
@@ -33,17 +35,11 @@ class UserBalance extends StatelessWidget {
           children: [
             const Text(
               'Saldo disponível:',
-              style: TextStyle(
-                color: Color(0xff757680),
-                fontSize: 17,
-              ),
+              style: kDefaultGreyParagraphStyle,
             ),
             Text(
               '$userCyptoBalance $cryptoSymbol',
-              style: const TextStyle(
-                color: Color(0xff000000),
-                fontSize: 17,
-              ),
+              style: kDefaultParagraphStyle,
             ),
           ],
         ),

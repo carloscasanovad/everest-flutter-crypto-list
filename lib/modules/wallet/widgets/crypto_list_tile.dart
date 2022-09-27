@@ -45,7 +45,7 @@ class CryptoListTile extends HookConsumerWidget {
       ),
       subtitle: Text(
         crypto.symbol.toUpperCase(),
-        style: kCryptoCardSubtitleStyle,
+        style: kDefaultParagraphStyle,
       ),
       leading: CircleAvatar(
         backgroundColor: const Color(0x00ffffff),

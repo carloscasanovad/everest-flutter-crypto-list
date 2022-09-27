@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/constants/app_colors.dart';
+import '../../../shared/constants/app_text_styles.dart';
 
 class BottomSheetWidget extends HookConsumerWidget {
   const BottomSheetWidget({
@@ -23,7 +24,7 @@ class BottomSheetWidget extends HookConsumerWidget {
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: Color(0xffc5c5c5),
+            color: kDefaultSoftGrey,
           ),
         ),
       ),
@@ -37,10 +38,7 @@ class BottomSheetWidget extends HookConsumerWidget {
             children: [
               const Text(
                 'Total estimado:',
-                style: TextStyle(
-                  fontSize: 16.5,
-                  color: Color(0xff757680),
-                ),
+                style: kDefaultGreyTitleStyle,
               ),
               const SizedBox(
                 height: 10,
@@ -49,17 +47,13 @@ class BottomSheetWidget extends HookConsumerWidget {
                 cryptoExchanged != 0
                     ? '${(cryptoExchanged / cryptoToConvert.current_price).toStringAsFixed(6)} ${cryptoToConvert.symbol.toUpperCase()}'
                     : '',
-                style: const TextStyle(
-                  fontSize: 16.5,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: kDefaultParagraphStyle,
               ),
             ],
           ),
           FloatingActionButton(
             isExtended: true,
-            backgroundColor:
-                ableToExchange ? kDefaultRed : const Color(0xffc5c5c5),
+            backgroundColor: ableToExchange ? kDefaultRed : kDefaultSoftGrey,
             child: const Icon(
               Icons.arrow_forward_ios,
               size: 18,

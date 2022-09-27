@@ -88,10 +88,7 @@ class _ExchangePageState extends ConsumerState<ExchangePage> {
               children: [
                 const Text(
                   'Quanto você gostaria de converter?',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: kTitle2TextStyle,
                 ),
                 const SizedBox(
                   height: 10,

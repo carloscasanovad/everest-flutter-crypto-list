@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/shared/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -74,7 +75,7 @@ class _DropDownItemsState extends ConsumerState<DropDownButtons> {
         ),
         const Icon(
           Icons.swap_horiz,
-          color: Color(0xffE02B57),
+          color: kDefaultRed,
           size: 30,
         ),
         DropdownButton(
