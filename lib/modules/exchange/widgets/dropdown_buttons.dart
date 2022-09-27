@@ -92,7 +92,10 @@ class _DropDownItemsState extends ConsumerState<DropDownButtons> {
                       (crypto) => crypto.symbol.toUpperCase() == value!);
             });
           },
-        )
+        ),
+        const SizedBox(
+          height: 5,
+        ),
       ],
     );
   }

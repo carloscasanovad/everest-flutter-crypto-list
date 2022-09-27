@@ -33,11 +33,22 @@ class _ExchangeFormFieldWidgetState
 
   @override
   Widget build(BuildContext context) {
+    ExchangeArguments args = widget.exchangeArguments;
+    void handleOnChange(double moneyToChange, bool ableToChange) {
+      ref.read(cryptoExchangedProvider.notifier).state = moneyToChange;
+      ref.read(ableToExchangeProvider.notifier).state = ableToChange;
+      showMoneyHelper = ableToChange;
+    }
+
+    Decimal toDecimal(double number) {
+      return Decimal.parse(number.toString());
+    }
+
     CryptoDataViewData cryptoData = ref.watch(cryptoToConvertDataProvider);
-    double userCyptoBalance = widget.exchangeArguments.cryptoBalance;
-    String cryptoSymbol = widget.exchangeArguments.crypto.symbol.toUpperCase();
-    Decimal cryptoPrice =
-        Decimal.parse(widget.exchangeArguments.crypto.current_price.toString());
+    Decimal userCyptoBalance = toDecimal(args.cryptoBalance);
+    String cryptoSymbol = args.crypto.symbol.toUpperCase();
+    Decimal cryptoPrice = toDecimal(args.crypto.current_price);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,17 +64,14 @@ class _ExchangeFormFieldWidgetState
           },
           onChanged: (value) {
             if (value != '') {
-              showMoneyHelper = true;
               Decimal formattedValue =
                   Decimal.parse(value.replaceAll(RegExp(r','), '.'));
               moneyToChange =
                   formattedValue.toDouble() * cryptoPrice.toDouble();
-              ref.read(cryptoExchangedProvider.notifier).state = moneyToChange;
-              ref.read(ableToExchangeProvider.notifier).state = true;
-              if (formattedValue > Decimal.parse(userCyptoBalance.toString())) {
-                showMoneyHelper = false;
-                ref.read(cryptoExchangedProvider.notifier).state = 0;
-                ref.read(ableToExchangeProvider.notifier).state = false;
+
+              handleOnChange(moneyToChange, true);
+              if (formattedValue > userCyptoBalance) {
+                handleOnChange(0, false);
               }
               if (formattedValue.toDouble() == 0) {
                 ref.read(ableToExchangeProvider.notifier).state = false;

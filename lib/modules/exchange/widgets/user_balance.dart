@@ -4,7 +4,7 @@ import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/exchange_arguments.dart';
 
-class UserBalance extends StatelessWidget {
+class UserBalance extends StatelessWidget implements PreferredSizeWidget {
   ExchangeArguments exchangeArguments;
 
   UserBalance({
@@ -47,4 +47,7 @@ class UserBalance extends StatelessWidget {
       ),
     );
   }
+  
+  @override
+  Size get preferredSize => const Size(double.infinity, 50);
 }

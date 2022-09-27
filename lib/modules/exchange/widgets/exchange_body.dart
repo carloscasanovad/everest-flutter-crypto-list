@@ -47,9 +47,6 @@ class ExchangeBody extends HookConsumerWidget {
                 selectedCrypto: selectedCrypto,
                 exchangeArguments: exchangeArguments,
               ),
-              const SizedBox(
-                height: 5,
-              ),
               ExchangeFormFieldWidget(
                 exchangeArguments: exchangeArguments,
                 cryptoList: cryptoList,
