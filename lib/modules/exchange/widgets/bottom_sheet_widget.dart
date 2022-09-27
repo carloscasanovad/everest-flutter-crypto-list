@@ -16,6 +16,7 @@ class BottomSheetWidget extends HookConsumerWidget {
     CryptoDataViewData cryptoToConvert = ref.watch(cryptoToConvertDataProvider);
     bool ableToExchange = ref.watch(ableToExchangeProvider);
     double cryptoExchanged = ref.watch(cryptoExchangedProvider);
+    print(cryptoToConvert);
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 10,
