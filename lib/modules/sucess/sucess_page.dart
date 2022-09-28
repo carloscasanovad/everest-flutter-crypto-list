@@ -10,11 +10,16 @@ class SuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(title: '', onPressed: () {
-        Navigator.of(context).pop();
-      }),
+      appBar: DefaultAppBar(
+          title: '',
+          onPressed: () {
+            Navigator.of(context).pop();
+          }),
       body: Center(
-        child: Image.asset(successIcon),
+        child: Hero(
+          tag: 'check',
+          child: Image.asset(successIcon),
+        ),
       ),
     );
   }
