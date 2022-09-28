@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/constants/app_colors.dart';
 
@@ -12,7 +13,9 @@ class ReviewInformationButton extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       height: 46,
       child: MaterialButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, SuccessPage.route);
+        },
         minWidth: MediaQuery.of(context).size.width,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),

@@ -1,5 +1,6 @@
 import 'package:everest_flutter_crypto_list/modules/exchange/views/exchange_page.dart';
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
+import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
 
 import '../../modules/details/views/details_page.dart';
 import '../../modules/exchange/model/exchange_arguments.dart';
@@ -41,6 +42,12 @@ Route<dynamic>? onGenerateRoute(settings) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         return ReviewPage(reviewArguments: arguments);
+      },
+    );
+  } else if (settings.name == SuccessPage.route) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return const SuccessPage();
       },
     );
   }
