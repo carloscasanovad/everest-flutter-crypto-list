@@ -16,6 +16,7 @@ class SuccessPage extends HookConsumerWidget {
       appBar: DefaultAppBar(
         title: '',
         onPressed: () {
+          ref.read(ableToExchangeProvider.notifier).state = false;
           ref.read(moneyToExchangeProvider.notifier).state = 0;
           ref.read(cryptoBeingExchangedDataProvider.notifier).state =
               CryptoDataViewData(
