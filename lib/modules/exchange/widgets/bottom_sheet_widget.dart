@@ -20,12 +20,12 @@ class BottomSheetWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CryptoDataViewData cryptoBeingExchanged =
+    CryptoDataViewData cryptoBeingExchangedData =
         ref.watch(cryptoBeingExchangedDataProvider);
     bool ableToExchange = ref.watch(ableToExchangeProvider);
     double moneyToExchange = ref.watch(moneyToExchangeProvider);
     double estimatedValue =
-        moneyToExchange / cryptoBeingExchanged.current_price;
+        moneyToExchange / cryptoBeingExchangedData.current_price;
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 10,
@@ -55,7 +55,7 @@ class BottomSheetWidget extends HookConsumerWidget {
               ),
               Text(
                 moneyToExchange != 0
-                    ? '${estimatedValue.toStringAsFixed(6)} ${cryptoBeingExchanged.symbol.toUpperCase()}'
+                    ? '${estimatedValue.toStringAsFixed(6)} ${cryptoBeingExchangedData.symbol.toUpperCase()}'
                     : '',
                 style: kDefaultParagraphStyle,
               ),
@@ -73,10 +73,11 @@ class BottomSheetWidget extends HookConsumerWidget {
                 context,
                 ReviewPage.route,
                 arguments: ReviewArguments(
-                  cryptoToExchange:
+                  cryptoToExchangeValue:
                       moneyToExchange / cryptoToExchangeData.current_price,
-                  cryptoBeingExchanged: estimatedValue,
-                  cryptoToConvertData: cryptoBeingExchanged,
+                  cryptoToExchangeData: cryptoToExchangeData,
+                  cryptoBeingExchangedValue: estimatedValue,
+                  cryptoBeingExchangeData: cryptoBeingExchangedData,
                 ),
               );
             },

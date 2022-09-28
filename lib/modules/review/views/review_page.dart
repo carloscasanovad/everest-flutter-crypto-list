@@ -15,10 +15,18 @@ class ReviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double exchange = reviewArguments.cryptoToExchangeData.current_price /
+        reviewArguments.cryptoBeingExchangeData.current_price;
+    String cryptoBeingExchangedSymbol =
+        reviewArguments.cryptoBeingExchangeData.symbol.toUpperCase();
+    String cryptoToExchangeSymbol =
+        reviewArguments.cryptoToExchangeData.symbol.toUpperCase();
+
     Map<String, String> rowInformation = {
-      'Converter': reviewArguments.cryptoToExchange.toString(),
-      'Receber': reviewArguments.cryptoBeingExchanged.toStringAsFixed(6),
-      'Câmbio': reviewArguments.cryptoToConvertData.current_price.toString(),
+      'Converter': reviewArguments.cryptoToExchangeValue.toString(),
+      'Receber': reviewArguments.cryptoBeingExchangedValue.toStringAsFixed(6),
+      'Câmbio':
+          '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
     };
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +73,7 @@ class ReviewPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: 3,
+              itemCount: rowInformation.length,
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(
                 height: 1,
