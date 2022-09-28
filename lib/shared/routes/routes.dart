@@ -14,8 +14,10 @@ import '../widgets/default_page_route.dart';
 
 Route<dynamic>? onGenerateRoute(settings) {
   if (settings.name == WalletPage.route) {
-    return DefaultPageRoute(
-      child: const WalletPage(),
+    return PageRouteBuilder(
+      pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) =>
+          const WalletPage(),
     );
   } else if (settings.name == TransactionsPage.route) {
     return DefaultPageRoute(
@@ -37,8 +39,10 @@ Route<dynamic>? onGenerateRoute(settings) {
       child: ReviewPage(reviewArguments: arguments),
     );
   } else if (settings.name == SuccessPage.route) {
-    return DefaultPageRoute(
-      child: const SuccessPage(),
+    return PageRouteBuilder(
+      pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) =>
+          const SuccessPage(),
     );
   }
   return null;

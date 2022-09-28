@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/shared/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
@@ -28,7 +29,7 @@ class ReviewInformation extends StatelessWidget {
       'Câmbio':
           '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
     };
-    
+
     return Column(
       children: [
         const Divider(
@@ -47,10 +48,11 @@ class ReviewInformation extends StatelessWidget {
                   children: [
                     Text(
                       rowInformation.keys.elementAt(index),
-                      style: const TextStyle(color: Colors.black),
+                      style: kSubtitleTextStyle,
                     ),
                     Text(
                       rowInformation.values.elementAt(index).toString(),
+                      style: kDefaultParagraphStyle,
                     ),
                   ],
                 ),

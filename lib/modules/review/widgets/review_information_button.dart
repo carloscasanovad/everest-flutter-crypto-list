@@ -17,7 +17,7 @@ class ReviewInformationButton extends StatefulWidget {
 
 class _ReviewInformationButtonState extends State<ReviewInformationButton> {
   ButtonState state = ButtonState.init;
-  double width = 300;
+  double width = 343;
   bool isAnimating = true;
 
   @override
@@ -25,7 +25,7 @@ class _ReviewInformationButtonState extends State<ReviewInformationButton> {
     bool isStreched = state == ButtonState.init;
     bool isDone = state == ButtonState.done;
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
       onEnd: () => setState(() => isAnimating = !isAnimating),
       height: 46,
@@ -35,8 +35,10 @@ class _ReviewInformationButtonState extends State<ReviewInformationButton> {
               margin: const EdgeInsets.only(bottom: 10),
               child: MaterialButton(
                 onPressed: () async {
-                  setState(() => width = 40);
-                  await Future.delayed(const Duration(milliseconds: 600));
+                  setState(() => width = 46);
+                  await Future.delayed(
+                    const Duration(milliseconds: 500),
+                  );
                   setState(() => state = ButtonState.loading);
                   await Future.delayed(
                     const Duration(seconds: 2),

@@ -4,10 +4,12 @@ import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
+  IconData icon;
   String title;
   VoidCallback onPressed;
   DefaultAppBar({
     Key? key,
+    required this.icon,
     required this.title,
     required this.onPressed,
   }) : super(key: key);
@@ -23,8 +25,8 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: IconButton(
         onPressed: onPressed,
-        icon: const Icon(
-          Icons.arrow_back_ios,
+        icon: Icon(
+          icon,
           color: kDefaultBlack,
           size: 21,
         ),

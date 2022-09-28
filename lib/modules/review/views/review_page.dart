@@ -25,6 +25,7 @@ class ReviewPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pop();
         },
+        icon: Icons.arrow_back_ios_new_outlined,
       ),
       body: ReviewScreen(
         reviewArguments: reviewArguments,
