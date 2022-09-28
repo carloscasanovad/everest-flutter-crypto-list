@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
-
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
+import '../widgets/review_information.dart';
 
 class ReviewPage extends StatelessWidget {
   ReviewArguments reviewArguments;
@@ -15,19 +14,6 @@ class ReviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double exchange = reviewArguments.cryptoToExchangeData.current_price /
-        reviewArguments.cryptoBeingExchangeData.current_price;
-    String cryptoBeingExchangedSymbol =
-        reviewArguments.cryptoBeingExchangeData.symbol.toUpperCase();
-    String cryptoToExchangeSymbol =
-        reviewArguments.cryptoToExchangeData.symbol.toUpperCase();
-
-    Map<String, String> rowInformation = {
-      'Converter': reviewArguments.cryptoToExchangeValue.toString(),
-      'Receber': reviewArguments.cryptoBeingExchangedValue.toStringAsFixed(6),
-      'Câmbio':
-          '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
-    };
     return Scaffold(
       appBar: AppBar(
         elevation: 3,
@@ -47,41 +33,25 @@ class ReviewPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Revise os dados da sua conversão'),
-          const Divider(
-            height: 1,
-            thickness: 1,
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        rowInformation.keys.elementAt(index),
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        rowInformation.values.elementAt(index).toString(),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              itemCount: rowInformation.length,
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(
-                height: 1,
-                thickness: 1,
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            const Expanded(
+              flex: 4,
+              child: Text(
+                'Revise os dados da sua conversão',
+                style: kTitle3TextStyle,
               ),
             ),
-          )
-        ],
+            Expanded(
+              flex: 3,
+              child: ReviewInformation(
+                reviewArguments: reviewArguments,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

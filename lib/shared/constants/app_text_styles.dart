@@ -12,6 +12,11 @@ const kTitle2TextStyle = TextStyle(
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
 );
+const kTitle3TextStyle = TextStyle(
+  fontSize: 30,
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w700,
+);
 const kWalletBalanceTextStyle = TextStyle(
   fontSize: 32,
   color: kDefaultBlack,
