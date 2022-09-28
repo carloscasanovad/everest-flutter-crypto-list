@@ -10,45 +10,35 @@ import '../../modules/wallet/views/wallet_page.dart';
 import '../../modules/details/model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/default_page_route.dart';
+
 Route<dynamic>? onGenerateRoute(settings) {
   if (settings.name == WalletPage.route) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return const WalletPage();
-      },
+    return DefaultPageRoute(
+      child: const WalletPage(),
     );
   } else if (settings.name == TransactionsPage.route) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return const TransactionsPage();
-      },
+    return DefaultPageRoute(
+      child: const TransactionsPage(),
     );
   } else if (settings.name == DetailsPage.route) {
     final arguments = settings.arguments as CryptoDataArguments;
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return DetailsPage(cryptoDataArguments: arguments);
-      },
+    return DefaultPageRoute(
+      child: DetailsPage(cryptoDataArguments: arguments),
     );
   } else if (settings.name == ExchangePage.route) {
     final arguments = settings.arguments as ExchangeArguments;
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return ExchangePage(exchangeArguments: arguments);
-      },
+    return DefaultPageRoute(
+      child: ExchangePage(exchangeArguments: arguments),
     );
   } else if (settings.name == ReviewPage.route) {
     final arguments = settings.arguments as ReviewArguments;
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return ReviewPage(reviewArguments: arguments);
-      },
+    return DefaultPageRoute(
+      child: ReviewPage(reviewArguments: arguments),
     );
   } else if (settings.name == SuccessPage.route) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return const SuccessPage();
-      },
+    return DefaultPageRoute(
+      child: const SuccessPage(),
     );
   }
   return null;
