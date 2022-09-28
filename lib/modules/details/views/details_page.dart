@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/shared/widgets/default_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,24 +19,13 @@ class DetailsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kDefaultBackgroundColor,
-        title: const Text(
-          'Detalhes',
-          style: kDetailsTitleTextStyle,
-        ),
-        leading: IconButton(
-          onPressed: () {
-            ref.read(chartDayProvider.notifier).state = 5;
-            ref.read(chartIndexTappedProvider.notifier).state = 5;
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: kDefaultBlack,
-            size: 21,
-          ),
-        ),
+      appBar: DefaultAppBar(
+        title: "Detalhes",
+        onPressed: () {
+          ref.read(chartDayProvider.notifier).state = 5;
+          ref.read(chartIndexTappedProvider.notifier).state = 5;
+          Navigator.of(context).pop();
+        },
       ),
       body: DetailsBody(
         cryptoDataArguments: cryptoDataArguments,

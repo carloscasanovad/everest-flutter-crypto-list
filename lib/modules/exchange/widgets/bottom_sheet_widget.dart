@@ -69,7 +69,8 @@ class BottomSheetWidget extends HookConsumerWidget {
               size: 18,
             ),
             onPressed: () {
-              Navigator.pushNamed(
+              if (ableToExchange) {
+                Navigator.pushNamed(
                 context,
                 ReviewPage.route,
                 arguments: ReviewArguments(
@@ -80,6 +81,7 @@ class BottomSheetWidget extends HookConsumerWidget {
                   cryptoBeingExchangeData: cryptoBeingExchangedData,
                 ),
               );
+              }
             },
           ),
         ],

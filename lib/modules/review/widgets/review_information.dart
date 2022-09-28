@@ -28,6 +28,7 @@ class ReviewInformation extends StatelessWidget {
       'Câmbio':
           '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
     };
+    
     return Column(
       children: [
         const Divider(

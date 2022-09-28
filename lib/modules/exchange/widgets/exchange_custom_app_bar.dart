@@ -19,7 +19,6 @@ class ExchangeCustomAppBar extends HookConsumerWidget
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final test = ref.watch(moneyToExchangeProvider);
     return AppBar(
       elevation: 3,
       backgroundColor: kDefaultBackgroundColor,
