@@ -31,8 +31,7 @@ class ReviewInformation extends StatelessWidget {
     String exchangeEqualsTo =
         '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol';
     String moneyBeingExchangedInfo =
-        'R\$ ${formater.format(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoToExchangeData.current_price).toString()}';
-
+        'R\$ ${formater.format(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoBeingExchangeData.current_price).toString()}';
     Map<String, String> rowInformation = {
       'Converter': cryptoBeingExchangedInfo,
       'Receber': cryptoToExchangedInfo,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
-import 'package:everest_flutter_crypto_list/shared/providers/providers.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/providers/notifier.dart';
