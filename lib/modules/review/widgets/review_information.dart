@@ -2,6 +2,7 @@ import 'package:everest_flutter_crypto_list/shared/constants/app_text_styles.dar
 import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
+import 'package:intl/intl.dart';
 
 import 'review_information_button.dart';
 
@@ -14,6 +15,8 @@ class ReviewInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formater = NumberFormat("#,##0.00", "pt");
+
     double exchange = reviewArguments.cryptoToExchangeData.current_price /
         reviewArguments.cryptoBeingExchangeData.current_price;
     String cryptoBeingExchangedSymbol =
@@ -28,7 +31,7 @@ class ReviewInformation extends StatelessWidget {
     String exchangeEqualsTo =
         '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol';
     String moneyBeingExchangedInfo =
-        'R\$ ${(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoToExchangeData.current_price).toStringAsFixed(2)}';
+        'R\$ ${formater.format(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoToExchangeData.current_price).toString()}';
 
     Map<String, String> rowInformation = {
       'Converter': cryptoBeingExchangedInfo,

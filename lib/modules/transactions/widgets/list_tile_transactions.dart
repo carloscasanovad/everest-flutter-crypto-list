@@ -12,7 +12,6 @@ class ListTileTransactions extends StatelessWidget {
 
   final TransactionsModel userTransaction;
   final String formattedDate;
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
