@@ -1,4 +1,4 @@
-import '../../modules/transactions/transactions_page.dart';
+import '../../modules/transactions/views/transactions_page.dart';
 import '../../modules/wallet/views/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

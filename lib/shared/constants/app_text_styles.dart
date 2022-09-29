@@ -56,6 +56,23 @@ const kDefaultGreyParagraphStyle = TextStyle(
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w400,
 );
+const kDefaultTransactionTitleStyle = TextStyle(
+  fontSize: 18.5,
+  color: kDefaultGrey,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w400,
+);
+const kDefaultTitle2TitleStyle = TextStyle(
+  fontSize: 18.5,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w400,
+);
+const kDefaultTransactionSubTitleStyle = TextStyle(
+  fontSize: 16,
+  color: kDefaultGrey,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w400,
+);
 const kDefaultGreyTitleStyle = TextStyle(
   fontSize: 16,
   fontFamily: 'SourceSansPro-Light',
