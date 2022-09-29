@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/review_arguments.dart';
-import '../widgets/review_information.dart';
+import 'review_information.dart';
 
 class BodyReviewPage extends StatelessWidget {
   ReviewArguments reviewArguments;

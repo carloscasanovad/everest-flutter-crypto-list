@@ -48,7 +48,7 @@ const kCryptoCardTitleStyle = TextStyle(
 const kDefaultParagraphStyle = TextStyle(
   fontSize: 17,
   fontFamily: 'SourceSansPro-Light',
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w500,
 );
 const kDefaultGreyParagraphStyle = TextStyle(
   fontSize: 17,

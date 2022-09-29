@@ -1,21 +1,33 @@
-import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
+import 'package:everest_flutter_crypto_list/modules/transactions/model/transactions_model.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
+import 'package:everest_flutter_crypto_list/shared/providers/providers.dart';
 
 import '../../../shared/constants/app_colors.dart';
+import '../../../shared/providers/notifier.dart';
 
 enum ButtonState { init, loading, done }
 
-class ReviewInformationButton extends StatefulWidget {
+class ReviewInformationButton extends ConsumerStatefulWidget {
+  String cryptoBeingExchangedInfo;
+  String cryptoToExchangedInfo;
+  String moneyBeingExchangedInfo;
   ReviewInformationButton({
     Key? key,
+    required this.cryptoBeingExchangedInfo,
+    required this.cryptoToExchangedInfo,
+    required this.moneyBeingExchangedInfo,
   }) : super(key: key);
 
   @override
-  State<ReviewInformationButton> createState() =>
+  ConsumerState<ReviewInformationButton> createState() =>
       _ReviewInformationButtonState();
 }
 
-class _ReviewInformationButtonState extends State<ReviewInformationButton> {
+class _ReviewInformationButtonState
+    extends ConsumerState<ReviewInformationButton> {
   ButtonState state = ButtonState.init;
   double width = 343;
   bool isAnimating = true;
@@ -44,10 +56,24 @@ class _ReviewInformationButtonState extends State<ReviewInformationButton> {
                     const Duration(seconds: 2),
                   );
                   setState(() => state = ButtonState.done);
-                  await Future.delayed(
-                    const Duration(milliseconds: 500),
-                    () => Navigator.pushNamed(context, SuccessPage.route),
-                  );
+                  await Future.delayed(const Duration(milliseconds: 500), () {
+                    ref
+                        .read(UserTransactionsState.movementsprovider.notifier)
+                        .addNewTransaction(
+                          TransactionsModel(
+                            cryptoBeingExchangedInfo:
+                                widget.cryptoBeingExchangedInfo,
+                            cryptoToExchangedInfo: widget.cryptoToExchangedInfo,
+                            moneyBeingExchangedInfo:
+                                widget.moneyBeingExchangedInfo,
+                            date: DateTime.now(),
+                          ),
+                        );
+                    return Navigator.pushNamed(
+                      context,
+                      SuccessPage.route,
+                    );
+                  });
                   setState(() {
                     state = ButtonState.init;
                   });

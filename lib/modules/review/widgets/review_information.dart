@@ -21,13 +21,19 @@ class ReviewInformation extends StatelessWidget {
     String cryptoToExchangeSymbol =
         reviewArguments.cryptoToExchangeData.symbol.toUpperCase();
 
+    String cryptoBeingExchangedInfo =
+        '${reviewArguments.cryptoToExchangeValue.toString()} $cryptoToExchangeSymbol';
+    String cryptoToExchangedInfo =
+        '${reviewArguments.cryptoBeingExchangedValue.toStringAsFixed(6)} $cryptoBeingExchangedSymbol';
+    String exchangeEqualsTo =
+        '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol';
+    String moneyBeingExchangedInfo =
+        'R\$ ${(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoToExchangeData.current_price).toStringAsFixed(4)}';
+
     Map<String, String> rowInformation = {
-      'Converter':
-          '${reviewArguments.cryptoToExchangeValue.toString()} $cryptoToExchangeSymbol',
-      'Receber':
-          '${reviewArguments.cryptoBeingExchangedValue.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
-      'Câmbio':
-          '1$cryptoToExchangeSymbol = ${exchange.toStringAsFixed(6)} $cryptoBeingExchangedSymbol',
+      'Converter': cryptoBeingExchangedInfo,
+      'Receber': cryptoToExchangedInfo,
+      'Câmbio': exchangeEqualsTo,
     };
 
     return Column(
@@ -66,7 +72,11 @@ class ReviewInformation extends StatelessWidget {
             ),
           ),
         ),
-        ReviewInformationButton(),
+        ReviewInformationButton(
+          cryptoBeingExchangedInfo: cryptoBeingExchangedInfo,
+          cryptoToExchangedInfo: cryptoToExchangedInfo,
+          moneyBeingExchangedInfo: moneyBeingExchangedInfo,
+        ),
       ],
     );
   }

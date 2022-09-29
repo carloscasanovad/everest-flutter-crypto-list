@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
-import 'package:everest_flutter_crypto_list/modules/review/views/review_screen.dart';
+import 'package:everest_flutter_crypto_list/modules/review/widgets/body_review_page.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
