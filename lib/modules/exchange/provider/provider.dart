@@ -2,11 +2,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../wallet/model/crypto_data_view_data.dart';
 
-final cryptoExchangedProvider = StateProvider<double>(
+final moneyToExchangeProvider = StateProvider<double>(
   (ref) => 0,
 );
 
-final cryptoToConvertDataProvider = StateProvider<CryptoDataViewData>(
+final cryptoBeingExchangedDataProvider = StateProvider<CryptoDataViewData>(
   (ref) => CryptoDataViewData(
     id: '',
     symbol: '',

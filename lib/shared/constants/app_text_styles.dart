@@ -12,6 +12,11 @@ const kTitle2TextStyle = TextStyle(
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w700,
 );
+const kTitle3TextStyle = TextStyle(
+  fontSize: 30,
+  fontFamily: 'Montserrat',
+  fontWeight: FontWeight.w700,
+);
 const kWalletBalanceTextStyle = TextStyle(
   fontSize: 32,
   color: kDefaultBlack,
@@ -41,7 +46,7 @@ const kCryptoCardTitleStyle = TextStyle(
   fontWeight: FontWeight.w700,
 );
 const kDefaultParagraphStyle = TextStyle(
-  fontSize: 16,
+  fontSize: 17,
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w400,
 );

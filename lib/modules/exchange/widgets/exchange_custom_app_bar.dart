@@ -19,7 +19,6 @@ class ExchangeCustomAppBar extends HookConsumerWidget
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final test = ref.watch(cryptoExchangedProvider);
     return AppBar(
       elevation: 3,
       backgroundColor: kDefaultBackgroundColor,
@@ -29,8 +28,8 @@ class ExchangeCustomAppBar extends HookConsumerWidget
       ),
       leading: IconButton(
         onPressed: () {
-          ref.read(cryptoExchangedProvider.notifier).state = 0;
-          ref.read(cryptoToConvertDataProvider.notifier).state =
+          ref.read(moneyToExchangeProvider.notifier).state = 0;
+          ref.read(cryptoBeingExchangedDataProvider.notifier).state =
               CryptoDataViewData(
             id: '',
             symbol: '',

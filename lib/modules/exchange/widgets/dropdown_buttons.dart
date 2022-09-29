@@ -87,7 +87,7 @@ class _DropDownItemsState extends ConsumerState<DropDownButtons> {
           onChanged: (value) {
             setState(() {
               widget.selectedCrypto = value;
-              ref.read(cryptoToConvertDataProvider.notifier).state =
+              ref.read(cryptoBeingExchangedDataProvider.notifier).state =
                   widget.cryptoList.firstWhere(
                       (crypto) => crypto.symbol.toUpperCase() == value!);
             });

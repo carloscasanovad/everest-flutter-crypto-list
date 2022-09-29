@@ -35,7 +35,7 @@ class _ExchangeFormFieldWidgetState
   Widget build(BuildContext context) {
     ExchangeArguments args = widget.exchangeArguments;
     void handleOnChange(double moneyToChange, bool ableToChange) {
-      ref.read(cryptoExchangedProvider.notifier).state = moneyToChange;
+      ref.read(moneyToExchangeProvider.notifier).state = moneyToChange;
       ref.read(ableToExchangeProvider.notifier).state = ableToChange;
       showMoneyHelper = ableToChange;
     }
@@ -44,7 +44,7 @@ class _ExchangeFormFieldWidgetState
       return Decimal.parse(number.toString());
     }
 
-    CryptoDataViewData cryptoData = ref.watch(cryptoToConvertDataProvider);
+    CryptoDataViewData cryptoData = ref.watch(cryptoBeingExchangedDataProvider);
     Decimal userCyptoBalance = toDecimal(args.cryptoBalance);
     String cryptoSymbol = args.crypto.symbol.toUpperCase();
     Decimal cryptoPrice = toDecimal(args.crypto.current_price);
@@ -58,7 +58,7 @@ class _ExchangeFormFieldWidgetState
           ),
           onTap: () {
             if (cryptoData.id == '') {
-              ref.read(cryptoToConvertDataProvider.notifier).state =
+              ref.read(cryptoBeingExchangedDataProvider.notifier).state =
                   widget.cryptoList[0];
             }
           },

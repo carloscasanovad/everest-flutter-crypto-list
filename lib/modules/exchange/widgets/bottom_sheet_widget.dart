@@ -1,21 +1,31 @@
-import 'package:everest_flutter_crypto_list/modules/exchange/provider/provider.dart';
-import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'package:everest_flutter_crypto_list/modules/exchange/provider/provider.dart';
+import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
+import 'package:everest_flutter_crypto_list/modules/review/views/review_page.dart';
+import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 
 class BottomSheetWidget extends HookConsumerWidget {
-  const BottomSheetWidget({
+  double cryptoBalance;
+  CryptoDataViewData cryptoToExchangeData;
+  BottomSheetWidget({
     Key? key,
+    required this.cryptoBalance,
+    required this.cryptoToExchangeData,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CryptoDataViewData cryptoToConvert = ref.watch(cryptoToConvertDataProvider);
+    CryptoDataViewData cryptoBeingExchangedData =
+        ref.watch(cryptoBeingExchangedDataProvider);
     bool ableToExchange = ref.watch(ableToExchangeProvider);
-    double cryptoExchanged = ref.watch(cryptoExchangedProvider);
+    double moneyToExchange = ref.watch(moneyToExchangeProvider);
+    double estimatedValue =
+        moneyToExchange / cryptoBeingExchangedData.current_price;
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 10,
@@ -44,8 +54,8 @@ class BottomSheetWidget extends HookConsumerWidget {
                 height: 10,
               ),
               Text(
-                cryptoExchanged != 0
-                    ? '${(cryptoExchanged / cryptoToConvert.current_price).toStringAsFixed(6)} ${cryptoToConvert.symbol.toUpperCase()}'
+                moneyToExchange != 0
+                    ? '${estimatedValue.toStringAsFixed(6)} ${cryptoBeingExchangedData.symbol.toUpperCase()}'
                     : '',
                 style: kDefaultParagraphStyle,
               ),
@@ -58,7 +68,21 @@ class BottomSheetWidget extends HookConsumerWidget {
               Icons.arrow_forward_ios,
               size: 18,
             ),
-            onPressed: () {},
+            onPressed: () {
+              if (ableToExchange) {
+                Navigator.pushNamed(
+                context,
+                ReviewPage.route,
+                arguments: ReviewArguments(
+                  cryptoToExchangeValue:
+                      moneyToExchange / cryptoToExchangeData.current_price,
+                  cryptoToExchangeData: cryptoToExchangeData,
+                  cryptoBeingExchangedValue: estimatedValue,
+                  cryptoBeingExchangeData: cryptoBeingExchangedData,
+                ),
+              );
+              }
+            },
           ),
         ],
       ),

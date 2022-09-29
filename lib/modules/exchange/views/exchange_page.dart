@@ -16,9 +16,16 @@ class ExchangePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ExchangeCustomAppBar(exchangeArguments: exchangeArguments),
-      body: ExchangeBody(exchangeArguments: exchangeArguments),
-      bottomSheet: const BottomSheetWidget(),
+      appBar: ExchangeCustomAppBar(
+        exchangeArguments: exchangeArguments,
+      ),
+      body: ExchangeBody(
+        exchangeArguments: exchangeArguments,
+      ),
+      bottomSheet: BottomSheetWidget(
+        cryptoBalance: exchangeArguments.cryptoBalance,
+        cryptoToExchangeData: exchangeArguments.crypto,
+      ),
     );
   }
 }
