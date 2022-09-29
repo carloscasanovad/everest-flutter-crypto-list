@@ -4,8 +4,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_colors.dart';
-import '../../../shared/constants/app_text_styles.dart';
 import '../../../shared/providers/notifier.dart';
+import 'list_tile_transactions.dart';
 
 class ListViewTransactions extends ConsumerStatefulWidget {
   const ListViewTransactions({
@@ -34,52 +34,10 @@ class _ListViewTransactionsState extends ConsumerState<ListViewTransactions> {
           var userTransaction = userTransactions[index];
           String formattedDate =
               DateFormat.yMd('pt-br').format(userTransaction.date);
-          return ListTile(
-            title: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 4.0,
-              ),
-              child: Text(
-                userTransaction.cryptoBeingExchangedInfo,
-                style: kDefaultTransactionTitleStyle,
-              ),
-            ),
-            subtitle: Text(
-              formattedDate,
-              style: kDefaultTransactionSubTitleStyle,
-            ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      userTransaction.cryptoToExchangedInfo,
-                      style: kDefaultTitle2TitleStyle,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 4),
-                      width: 150,
-                      height: 25,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 2.0,
-                          ),
-                          child: Text(
-                            userTransaction.moneyBeingExchangedInfo,
-                            style: kDefaultTransactionSubTitleStyle,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+
+          return ListTileTransactions(
+            userTransaction: userTransaction,
+            formattedDate: formattedDate,
           );
         },
         separatorBuilder: (BuildContext context, int index) => const Divider(
