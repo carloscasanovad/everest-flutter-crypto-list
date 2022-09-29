@@ -27,7 +27,7 @@ class ReviewPage extends StatelessWidget {
         },
         icon: Icons.arrow_back_ios_new_outlined,
       ),
-      body: ReviewScreen(
+      body: BodyReviewPage(
         reviewArguments: reviewArguments,
       ),
     );

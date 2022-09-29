@@ -4,9 +4,9 @@ import '../../../shared/constants/app_text_styles.dart';
 import '../model/review_arguments.dart';
 import '../widgets/review_information.dart';
 
-class ReviewScreen extends StatelessWidget {
+class BodyReviewPage extends StatelessWidget {
   ReviewArguments reviewArguments;
-  ReviewScreen({
+  BodyReviewPage({
     super.key,
     required this.reviewArguments,
   });

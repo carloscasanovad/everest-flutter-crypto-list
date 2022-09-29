@@ -4,10 +4,10 @@ import '../model/market_chart_view_data.dart';
 import '../repositories/market_chart_repository_provider.dart';
 import '../useCase/get_crypto_market_chart_useCase.dart';
 
-final chartIndexTappedProvider = StateProvider<int>(
+final chartIndexTappedProvider = StateProvider.autoDispose<int>(
   (ref) => 5,
 );
-final chartDayProvider = StateProvider<int>(
+final chartDayProvider = StateProvider.autoDispose<int>(
   (ref) => 5,
 );
 
