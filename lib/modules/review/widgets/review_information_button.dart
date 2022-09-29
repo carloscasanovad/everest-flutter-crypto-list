@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
 
 import '../../../shared/constants/app_colors.dart';
-import '../../../shared/providers/notifier.dart';
+import '../../../shared/controllers/user_transaction_notifier.dart';
 
 enum ButtonState { init, loading, done }
 

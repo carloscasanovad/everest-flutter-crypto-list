@@ -6,7 +6,7 @@ import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../../wallet/model/crypto_data_view_data.dart';
 import '../model/exchange_arguments.dart';
-import '../provider/provider.dart';
+import '../controllers/provider.dart';
 
 class ExchangeCustomAppBar extends HookConsumerWidget
     implements PreferredSizeWidget {

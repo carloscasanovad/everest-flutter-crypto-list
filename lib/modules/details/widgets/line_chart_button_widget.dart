@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/constants/app_colors.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 
 class LineChartButtonWidget extends HookConsumerWidget {
   int dayRange;

@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../shared/widgets/default_error_widget.dart';
 import '../../../shared/widgets/default_loading_spinner.dart';
 import '../model/user_wallet_model.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 import '../widgets/crypto_list_view.dart';
 import '../widgets/header.dart';
 

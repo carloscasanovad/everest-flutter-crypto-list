@@ -4,7 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_colors.dart';
-import '../../../shared/providers/notifier.dart';
+import '../../../shared/controllers/user_transaction_notifier.dart';
 import 'list_tile_transactions.dart';
 
 class ListViewTransactions extends ConsumerStatefulWidget {

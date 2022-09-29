@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../model/crypto_data_arguments.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 import '../widgets/details_body.dart';
 
 class DetailsPage extends HookConsumerWidget {

@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../model/market_chart_view_data.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 import 'crypto_infomation_row.dart';
 import 'crypto_information_variation_row.dart';
 

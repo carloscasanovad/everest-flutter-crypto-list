@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:everest_flutter_crypto_list/modules/exchange/provider/provider.dart';
+import 'package:everest_flutter_crypto_list/modules/exchange/controllers/provider.dart';
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
 import 'package:everest_flutter_crypto_list/modules/review/views/review_page.dart';
 import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';

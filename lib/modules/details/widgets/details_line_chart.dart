@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../model/market_chart_view_data.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 
 class DetailsLineChart extends HookConsumerWidget {
   MarketChartViewData marketChartData;

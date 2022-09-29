@@ -5,7 +5,7 @@ import '../../../shared/constants/app_text_styles.dart';
 import '../../../shared/widgets/default_error_widget.dart';
 import '../../../shared/widgets/default_loading_spinner.dart';
 import '../../wallet/model/crypto_data_view_data.dart';
-import '../../wallet/providers/providers.dart';
+import '../../wallet/controllers/providers.dart';
 import '../model/exchange_arguments.dart';
 import 'dropdown_buttons.dart';
 import 'exchange_form_field_widget.dart';

@@ -9,7 +9,7 @@ import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_vie
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/exchange_arguments.dart';
-import '../provider/provider.dart';
+import '../controllers/provider.dart';
 
 class ExchangeFormFieldWidget extends ConsumerStatefulWidget {
   ExchangeArguments exchangeArguments;
