@@ -1,13 +1,15 @@
 
 class TransactionsModel {
   String cryptoBeingExchangedInfo;
-  String cryptoToExchangedInfo;
+  String cryptoToExchangeInfo;
   String moneyBeingExchangedInfo;
+  String exchangeEqualsTo;
   DateTime date;
   TransactionsModel({
     required this.cryptoBeingExchangedInfo,
-    required this.cryptoToExchangedInfo,
+    required this.cryptoToExchangeInfo,
     required this.moneyBeingExchangedInfo,
+    required this.exchangeEqualsTo,
     required this.date,
   });
 }

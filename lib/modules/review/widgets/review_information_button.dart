@@ -1,8 +1,8 @@
-import 'package:everest_flutter_crypto_list/modules/transactions/model/transactions_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
+import 'package:everest_flutter_crypto_list/modules/transactions/model/transactions_model.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/controllers/user_transaction_notifier.dart';
@@ -13,11 +13,13 @@ class ReviewInformationButton extends ConsumerStatefulWidget {
   String cryptoBeingExchangedInfo;
   String cryptoToExchangedInfo;
   String moneyBeingExchangedInfo;
+  String exchangeEqualsTo;
   ReviewInformationButton({
     Key? key,
     required this.cryptoBeingExchangedInfo,
     required this.cryptoToExchangedInfo,
     required this.moneyBeingExchangedInfo,
+    required this.exchangeEqualsTo,
   }) : super(key: key);
 
   @override
@@ -62,10 +64,11 @@ class _ReviewInformationButtonState
                           TransactionsModel(
                             cryptoBeingExchangedInfo:
                                 widget.cryptoBeingExchangedInfo,
-                            cryptoToExchangedInfo: widget.cryptoToExchangedInfo,
+                            cryptoToExchangeInfo: widget.cryptoToExchangedInfo,
                             moneyBeingExchangedInfo:
                                 widget.moneyBeingExchangedInfo,
                             date: DateTime.now(),
+                            exchangeEqualsTo: widget.exchangeEqualsTo,
                           ),
                         );
                     return Navigator.pushNamed(

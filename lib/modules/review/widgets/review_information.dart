@@ -78,6 +78,7 @@ class ReviewInformation extends StatelessWidget {
           cryptoBeingExchangedInfo: cryptoBeingExchangedInfo,
           cryptoToExchangedInfo: cryptoToExchangedInfo,
           moneyBeingExchangedInfo: moneyBeingExchangedInfo,
+          exchangeEqualsTo: exchangeEqualsTo,
         ),
       ],
     );

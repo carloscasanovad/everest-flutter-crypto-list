@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/transactions_model.dart';
+import 'transaction_modal_details.dart';
 
 class ListTileTransactions extends StatelessWidget {
-  const ListTileTransactions({
+  TransactionsModel userTransaction;
+  String formattedDate;
+  ListTileTransactions({
     Key? key,
     required this.userTransaction,
     required this.formattedDate,
   }) : super(key: key);
 
-  final TransactionsModel userTransaction;
-  final String formattedDate;
   @override
   Widget build(BuildContext context) {
+    String formatedDateTime =
+        DateFormat('dd/MM/yyyy  -  ').add_jm().format(userTransaction.date);
+    Map<String, String> transactionDetails = {
+      'Quantidade convertida': userTransaction.cryptoBeingExchangedInfo,
+      'Quantidade recebida': userTransaction.cryptoToExchangeInfo,
+      'Valor': userTransaction.moneyBeingExchangedInfo,
+      "Câmbio": userTransaction.exchangeEqualsTo,
+    };
     return ListTile(
+      onTap: (() {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return TransactionModalDetails(
+              formatedDateTime: formatedDateTime,
+              transactionDetails: transactionDetails,
+            );
+          },
+        );
+      }),
       title: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 4.0,
@@ -36,7 +57,7 @@ class ListTileTransactions extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Text(
-                userTransaction.cryptoToExchangedInfo,
+                userTransaction.cryptoToExchangeInfo,
                 style: kDefaultTitle2TitleStyle,
               ),
               Container(
