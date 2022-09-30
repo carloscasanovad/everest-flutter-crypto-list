@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/exchange/model/exchange_arguments.dart';
 import 'package:everest_flutter_crypto_list/modules/exchange/views/exchange_page.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_colors.dart';
 
 class ConvertCryptoButton extends StatelessWidget {
@@ -12,7 +12,6 @@ class ConvertCryptoButton extends StatelessWidget {
     Key? key,
     required this.cryptoDataArguments,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +35,9 @@ class ConvertCryptoButton extends StatelessWidget {
           side: const BorderSide(color: kDefaultRed),
         ),
         color: kDefaultRed,
-        child: const Text(
-          'Converter moeda',
-          style: TextStyle(
+        child: Text(
+          AppLocalizations.of(context)!.convertCrypto,
+          style: const TextStyle(
             fontSize: 17,
             color: Color(0xffffffff),
           ),

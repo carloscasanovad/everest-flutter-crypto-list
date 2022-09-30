@@ -1,7 +1,7 @@
 import 'package:everest_flutter_crypto_list/shared/widgets/default_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../model/crypto_data_arguments.dart';
 import '../controllers/providers.dart';
 import '../widgets/details_body.dart';
@@ -18,7 +18,7 @@ class DetailsPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: DefaultAppBar(
-        title: "Detalhes",
+        title: AppLocalizations.of(context)!.details,
         onPressed: () {
           ref.read(chartDayProvider.notifier).state = 5;
           ref.read(chartIndexTappedProvider.notifier).state = 5;

@@ -3,6 +3,7 @@ import 'package:everest_flutter_crypto_list/shared/constants/app_text_styles.dar
 import 'package:flutter/material.dart';
 import '../../../shared/widgets/bottom_nav_bar.dart';
 import '../widgets/list_view_transactions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TransactionsPage extends StatelessWidget {
   const TransactionsPage({super.key});
@@ -20,20 +21,20 @@ class TransactionsPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children:  [
               Text(
-                'Movimentações',
+                AppLocalizations.of(context)!.transactions,
                 style: kTitle3TextStyle,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Divider(
+              const Divider(
                 height: 10,
                 thickness: 1,
                 color: kDefaultLightGrey,
               ),
-              ListViewTransactions(),
+              const ListViewTransactions(),
             ],
           ),
         ),

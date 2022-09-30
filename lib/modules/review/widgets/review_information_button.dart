@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/controllers/user_transaction_notifier.dart';
 
@@ -39,7 +39,7 @@ class _ReviewInformationButtonState
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeIn,
       onEnd: () => setState(() => isAnimating = !isAnimating),
-      height: 46,
+      height: 50,
       width: width,
       child: isStreched
           ? Container(
@@ -82,9 +82,9 @@ class _ReviewInformationButtonState
                   side: const BorderSide(color: kDefaultRed),
                 ),
                 color: kDefaultRed,
-                child: const Text(
-                  'Concluir Conversão',
-                  style: TextStyle(
+                child:  Text(
+                  AppLocalizations.of(context)!.convert,
+                  style: const TextStyle(
                     fontSize: 17,
                     color: Color(0xffffffff),
                   ),

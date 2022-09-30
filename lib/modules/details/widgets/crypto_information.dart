@@ -2,7 +2,7 @@ import '../model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../model/market_chart_view_data.dart';
 import '../controllers/providers.dart';
 import 'crypto_infomation_row.dart';
@@ -41,20 +41,20 @@ class CryptoInformation extends HookConsumerWidget {
       child: Column(
         children: [
           CryptoInformationRow(
-            description: 'Preço atual',
+            description: AppLocalizations.of(context)!.currentPrice,
             value: 'R\$ ${formater.format(selectedDayPrice)}',
           ),
           CryptoInformationVariationRow(
-            description: 'Variação do dia',
+            description: AppLocalizations.of(context)!.priceVariation,
             value: getDayVariation(),
           ),
           CryptoInformationRow(
-            description: 'Quantidade',
+            description: AppLocalizations.of(context)!.userCryptoQuantity,
             value:
                 '${cryptoDataArguments.cryptoBalance.toStringAsFixed(2)} $cryptoId',
           ),
           CryptoInformationRow(
-            description: 'Valor',
+            description: AppLocalizations.of(context)!.userCryptoValue,
             value:
                 'R\$ ${formater.format(cryptoDataArguments.cryptoValue).toString()}',
           ),

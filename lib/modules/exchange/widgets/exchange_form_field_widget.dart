@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import 'package:everest_flutter_crypto_list/modules/wallet/model/crypto_data_view_data.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/exchange_arguments.dart';
@@ -105,7 +105,7 @@ class _ExchangeFormFieldWidgetState
         Text(
           showMoneyHelper
               ? 'R\$ ${formater.format(moneyToChange)}'
-              : 'Saldo insuficiente!',
+              : AppLocalizations.of(context)!.insufficientFunds,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,

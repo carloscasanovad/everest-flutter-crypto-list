@@ -1,3 +1,4 @@
+import 'package:everest_flutter_crypto_list/shared/constants/app_text_styles.dart';
 import 'package:everest_flutter_crypto_list/shared/widgets/default_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -5,6 +6,7 @@ import '../../shared/controllers/asset_provider.dart';
 import '../exchange/controllers/provider.dart';
 import '../wallet/model/crypto_data_view_data.dart';
 import '../wallet/views/wallet_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuccessPage extends HookConsumerWidget {
   const SuccessPage({super.key});
@@ -32,9 +34,37 @@ class SuccessPage extends HookConsumerWidget {
         icon: Icons.close,
       ),
       body: Center(
-        child: Hero(
-          tag: 'check',
-          child: Image.asset(successIcon),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Hero(
+              tag: 'check',
+              child: Image.asset(successIcon),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 15,
+                horizontal: 10,
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Text(
+                   AppLocalizations.of(context)!.successTitle,
+                    style: kSucessTitle1Style,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    AppLocalizations.of(context)!.successSubtitle,
+                    style: kSucessTitle2Style,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
