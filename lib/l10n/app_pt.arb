@@ -22,5 +22,9 @@
     "portfolio": "Portfolio",
     "transactions": "Movimentações",
     "successTitle": "Conversão efetuada",
-    "successSubtitle": "Conversão de moeda efetuada com sucesso!"
+    "successSubtitle": "Conversão de moeda efetuada com sucesso!",
+    "transactionBillTitle": "Comprovante de",
+    "transactionBillSubtitle": "conversão",
+    "quantityConverted": "Quantidade convertida",
+    "quantityReceive": "Quantidade recebida"
 }

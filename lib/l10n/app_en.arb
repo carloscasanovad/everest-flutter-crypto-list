@@ -91,8 +91,20 @@
     "@sucessTitle": {
       "description": "sucess title"
     },
-    "successSubtitle": "Your conversion was successfully completed!",
-    "@sucessSubtitle": {
-      "description": "sucess subtitle"
+    "transactionBillTitle": "Bill of",
+    "@transactionBillTitle": {
+      "description": "Transaction bill title"
+    },
+    "transactionBillSubtitle": "exchange",
+    "@transactionBillSubtitle": {
+      "description": "Transaction bill subtitle"
+    },
+    "quantityConverted": "Quantity converted",
+    "@quantityConverted": {
+      "description": "quantity converted text"
+    },
+    "quantityReceive": "Quantity receive",
+    "@quantityReceive": {
+      "description": "quantity receive text"
     }
 }
