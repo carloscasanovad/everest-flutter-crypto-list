@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../../details/model/crypto_data_arguments.dart';
 import '../model/crypto_data_view_data.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 
 class CryptoListTile extends HookConsumerWidget {
   CryptoDataViewData crypto;

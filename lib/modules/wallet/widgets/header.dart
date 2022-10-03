@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/user_wallet_model.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 
 class Header extends ConsumerStatefulWidget {
   List<UserWalletModel> userCryptoWallet;

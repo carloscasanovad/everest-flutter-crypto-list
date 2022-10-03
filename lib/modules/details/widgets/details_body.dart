@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/widgets/default_error_widget.dart';
 import '../model/crypto_data_arguments.dart';
-import '../providers/providers.dart';
+import '../controllers/providers.dart';
 import 'convert_crypto_button.dart';
 import 'crypto_information.dart';
 import 'details_header.dart';

@@ -5,7 +5,7 @@ import 'package:everest_flutter_crypto_list/shared/constants/app_colors.dart';
 
 import '../../wallet/model/crypto_data_view_data.dart';
 import '../model/exchange_arguments.dart';
-import '../provider/provider.dart';
+import '../controllers/provider.dart';
 
 class DropDownButtons extends ConsumerStatefulWidget {
   ExchangeArguments exchangeArguments;

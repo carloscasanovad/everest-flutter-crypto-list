@@ -1,10 +1,10 @@
-import '../../modules/transactions/transactions_page.dart';
+import '../../modules/transactions/views/transactions_page.dart';
 import '../../modules/wallet/views/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../constants/app_colors.dart';
-import '../providers/asset_provider.dart';
-import '../providers/providers.dart';
+import '../controllers/asset_provider.dart';
+import '../controllers/providers.dart';
 
 class BottomNavBar extends HookConsumerWidget {
   const BottomNavBar({super.key});

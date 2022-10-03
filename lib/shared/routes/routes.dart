@@ -5,7 +5,7 @@ import 'package:everest_flutter_crypto_list/modules/sucess/sucess_page.dart';
 import '../../modules/details/views/details_page.dart';
 import '../../modules/exchange/model/exchange_arguments.dart';
 import '../../modules/review/views/review_page.dart';
-import '../../modules/transactions/transactions_page.dart';
+import '../../modules/transactions/views/transactions_page.dart';
 import '../../modules/wallet/views/wallet_page.dart';
 import '../../modules/details/model/crypto_data_arguments.dart';
 import 'package:flutter/material.dart';

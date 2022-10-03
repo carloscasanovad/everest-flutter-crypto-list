@@ -1,8 +1,8 @@
 import 'package:everest_flutter_crypto_list/shared/widgets/default_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared/providers/asset_provider.dart';
-import '../exchange/provider/provider.dart';
+import '../../shared/controllers/asset_provider.dart';
+import '../exchange/controllers/provider.dart';
 import '../wallet/model/crypto_data_view_data.dart';
 import '../wallet/views/wallet_page.dart';
 
