@@ -91,6 +91,10 @@
     "@sucessTitle": {
       "description": "sucess title"
     },
+    "successSubtitle": "Your conversion was successfully completed!",
+    "@sucessSubtitle": {
+      "description": "sucess subtitle"
+    },
     "transactionBillTitle": "Bill of",
     "@transactionBillTitle": {
       "description": "Transaction bill title"

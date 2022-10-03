@@ -6,6 +6,7 @@ import 'package:everest_flutter_crypto_list/modules/transactions/model/transacti
 
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/controllers/user_transaction_notifier.dart';
+import '../../../shared/controllers/user_transaction_notifier.dart';
 
 enum ButtonState { init, loading, done }
 
@@ -58,9 +59,7 @@ class _ReviewInformationButtonState
                   );
                   setState(() => state = ButtonState.done);
                   await Future.delayed(const Duration(milliseconds: 500), () {
-                    ref
-                        .read(UserTransactionsState.movementsprovider.notifier)
-                        .addNewTransaction(
+                    ref.read(movementsProvider.notifier).state.add(
                           TransactionsModel(
                             cryptoBeingExchangedInfo:
                                 widget.cryptoBeingExchangedInfo,
@@ -85,7 +84,7 @@ class _ReviewInformationButtonState
                   side: const BorderSide(color: kDefaultRed),
                 ),
                 color: kDefaultRed,
-                child:  Text(
+                child: Text(
                   AppLocalizations.of(context)!.convert,
                   style: const TextStyle(
                     fontSize: 17,

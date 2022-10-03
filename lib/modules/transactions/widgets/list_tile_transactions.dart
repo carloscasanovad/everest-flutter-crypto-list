@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/transactions_model.dart';
 import 'transaction_modal_details.dart';
@@ -19,10 +19,10 @@ class ListTileTransactions extends StatelessWidget {
     String formatedDateTime =
         DateFormat('dd/MM/yyyy  -  ').add_jm().format(userTransaction.date);
     Map<String, String> transactionDetails = {
-      'Quantidade convertida': userTransaction.cryptoBeingExchangedInfo,
-      'Quantidade recebida': userTransaction.cryptoToExchangeInfo,
-      'Valor': userTransaction.moneyBeingExchangedInfo,
-      "Câmbio": userTransaction.exchangeEqualsTo,
+      AppLocalizations.of(context)!.quantityConverted: userTransaction.cryptoBeingExchangedInfo,
+      AppLocalizations.of(context)!.quantityReceive: userTransaction.cryptoToExchangeInfo,
+      AppLocalizations.of(context)!.total: userTransaction.moneyBeingExchangedInfo,
+      AppLocalizations.of(context)!.exchangeRate: userTransaction.exchangeEqualsTo,
     };
     return ListTile(
       onTap: (() {
