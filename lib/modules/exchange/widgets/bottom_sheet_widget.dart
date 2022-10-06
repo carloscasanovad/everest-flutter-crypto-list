@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:everest_flutter_crypto_list/modules/exchange/controllers/provider.dart';
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
 import 'package:everest_flutter_crypto_list/modules/review/views/review_page.dart';
@@ -46,8 +46,8 @@ class BottomSheetWidget extends HookConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Total estimado:',
+              Text(
+                AppLocalizations.of(context)!.total,
                 style: kDefaultGreyTitleStyle,
               ),
               const SizedBox(
@@ -71,16 +71,16 @@ class BottomSheetWidget extends HookConsumerWidget {
             onPressed: () {
               if (ableToExchange) {
                 Navigator.pushNamed(
-                context,
-                ReviewPage.route,
-                arguments: ReviewArguments(
-                  cryptoToExchangeValue:
-                      moneyToExchange / cryptoToExchangeData.current_price,
-                  cryptoToExchangeData: cryptoToExchangeData,
-                  cryptoBeingExchangedValue: estimatedValue,
-                  cryptoBeingExchangeData: cryptoBeingExchangedData,
-                ),
-              );
+                  context,
+                  ReviewPage.route,
+                  arguments: ReviewArguments(
+                    cryptoToExchangeValue:
+                        moneyToExchange / cryptoToExchangeData.current_price,
+                    cryptoToExchangeData: cryptoToExchangeData,
+                    cryptoBeingExchangedValue: estimatedValue,
+                    cryptoBeingExchangeData: cryptoBeingExchangedData,
+                  ),
+                );
               }
             },
           ),

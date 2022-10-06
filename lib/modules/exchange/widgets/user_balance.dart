@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_colors.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/exchange_arguments.dart';
@@ -34,8 +34,8 @@ class UserBalance extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Saldo disponível:',
+             Text(
+              AppLocalizations.of(context)!.totalBalance,
               style: kDefaultGreyParagraphStyle,
             ),
             Text(

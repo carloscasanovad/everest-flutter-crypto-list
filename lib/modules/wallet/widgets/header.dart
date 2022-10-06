@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/constants/app_text_styles.dart';
 import '../model/user_wallet_model.dart';
 import '../controllers/providers.dart';
@@ -45,8 +45,8 @@ class _WalletHeaderState extends ConsumerState<Header> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Cripto',
+                       Text(
+                        AppLocalizations.of(context)!.crypto,
                         style: kTitleTextStyle,
                       ),
                       IconButton(
@@ -77,9 +77,9 @@ class _WalletHeaderState extends ConsumerState<Header> {
                     ],
                   ),
                   Row(
-                    children: const [
+                    children: [
                       Text(
-                        "Valor total de moedas",
+                        AppLocalizations.of(context)!.userBalance,
                         style: kSubtitleTextStyle,
                       ),
                     ],

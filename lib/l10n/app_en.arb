@@ -1,0 +1,114 @@
+{
+    "crypto": "Crypto",
+    "@crypto": {
+      "description": "A.K.A NFT"
+    },
+    "userBalance": "Total balance:",
+    "@userBalance": {
+      "description": "User cryptos balance in R$"
+    },
+    "details": "Details:",
+    "@details": {
+      "description": "Details appBar title"
+    },
+    "convertCrypto": "Convert crypto",
+    "@convertCrypto": {
+      "description": "Text for button to convert crypto"
+    },
+    "currentPrice": "Current price",
+    "@currentPrice": {
+      "description": "Text for the current crypto price"
+    },
+    "priceVariation": "Change %",
+    "@priceVariation": {
+      "description": "Price variation in %"
+    },
+    "userCryptoQuantity": "Balance",
+    "@userCryptoQuantity": {
+      "description": "User crypto balance"
+    },
+    "userCryptoValue": "Value",
+    "@userCryptoValue": {
+      "description": "User crypto value"
+    },
+    "exchange": "Exchange",
+    "@exchange": {
+      "description": "Exchange appBar title"
+    },
+    "total": "Total:",
+    "@total": {
+      "description": "Estimated exchange value"
+    },
+    "exchangeTitle": "How much would you like to convert?",
+    "@exchangeTitle": {
+      "description": "exchange page title"
+    },
+    "insufficientFunds": "Insufficient funds!",
+    "@insufficientFunds": {
+      "description": "default text for insufficient funds"
+    },
+    "totalBalance": "Total balance:",
+    "@totalBalance": {
+      "description": "user crypto balance for an specific crypto"
+    },
+    "confirm": "Confirm conversion",
+    "@confirm": {
+      "description": "confirm appBar Title"
+    },
+    "confirmTitle": "Confirm your conversion",
+    "@confirmTitle": {
+      "description": "confirm page Title"
+    },
+    "convert": "Convert",
+    "@convert": {
+      "description": "default text for convert button"
+    },
+    "payWith": "Pay with",
+    "@payWith": {
+      "description": "default text for pay with"
+    },
+    "receive": "Receive",
+    "@receive": {
+      "description": "default text for receive"
+    },
+    "exchangeRate": "Exchange rate",
+    "@exchangeRate": {
+      "description": "exchange rate text"
+    },
+    "transactionsAppBar": "Transactions",
+    "@transactionsAppBar": {
+      "description": "transactions appBar title"
+    },
+    "portfolio": "Portfolio",
+    "@portfolio": {
+      "description": "portfolio text for navBar"
+    },
+    "transactions": "Transactions",
+    "@transactions": {
+      "description": "transactions text for navBar"
+    },
+    "successTitle": "Conversion completed",
+    "@sucessTitle": {
+      "description": "sucess title"
+    },
+    "successSubtitle": "Your conversion was successfully completed!",
+    "@sucessSubtitle": {
+      "description": "sucess subtitle"
+    },
+    "transactionBillTitle": "Bill of",
+    "@transactionBillTitle": {
+      "description": "Transaction bill title"
+    },
+    "transactionBillSubtitle": "exchange",
+    "@transactionBillSubtitle": {
+      "description": "Transaction bill subtitle"
+    },
+    "quantityConverted": "Quantity converted",
+    "@quantityConverted": {
+      "description": "quantity converted text"
+    },
+    "quantityReceive": "Quantity receive",
+    "@quantityReceive": {
+      "description": "quantity receive text"
+    }
+}

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
 import 'package:everest_flutter_crypto_list/modules/review/widgets/body_review_page.dart';
-
-import '../../../shared/constants/app_colors.dart';
-import '../../../shared/constants/app_text_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../shared/widgets/default_appbar.dart';
 
 class ReviewPage extends StatelessWidget {
@@ -21,7 +19,7 @@ class ReviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar(
-        title: 'Revisar',
+        title: AppLocalizations.of(context)!.confirm,
         onPressed: () {
           Navigator.of(context).pop();
         },

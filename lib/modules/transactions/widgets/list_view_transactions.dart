@@ -26,7 +26,7 @@ class _ListViewTransactionsState extends ConsumerState<ListViewTransactions> {
 
   @override
   Widget build(BuildContext context) {
-    final userTransactions = ref.watch(UserTransactionsState.movementsprovider);
+    final userTransactions = ref.watch(movementsProvider);
     return Expanded(
       child: ListView.separated(
         itemCount: userTransactions.length,

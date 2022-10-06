@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../shared/constants/app_text_styles.dart';
 
@@ -15,15 +16,15 @@ class TransactionModalDetailsHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Comprovante da',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.transactionBillTitle,
+          style: const TextStyle(
             fontSize: 26,
           ),
         ),
-        const Text(
-          'conversão',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.transactionBillSubtitle,
+          style: const TextStyle(
             fontSize: 26,
           ),
         ),

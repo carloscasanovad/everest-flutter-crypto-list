@@ -67,6 +67,17 @@ const kDefaultTitle2TitleStyle = TextStyle(
   fontFamily: 'SourceSansPro-Light',
   fontWeight: FontWeight.w400,
 );
+const kSucessTitle1Style = TextStyle(
+  fontSize: 32,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w600,
+);
+const kSucessTitle2Style = TextStyle(
+  fontSize: 18,
+  color: kDefaultGrey,
+  fontFamily: 'SourceSansPro-Light',
+  fontWeight: FontWeight.w400,
+);
 const kDefaultTransactionSubTitleStyle = TextStyle(
   fontSize: 16,
   color: kDefaultGrey,

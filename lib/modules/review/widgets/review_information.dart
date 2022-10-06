@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:everest_flutter_crypto_list/modules/review/model/review_arguments.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'review_information_button.dart';
 
 class ReviewInformation extends StatelessWidget {
@@ -33,9 +33,9 @@ class ReviewInformation extends StatelessWidget {
     String moneyBeingExchangedInfo =
         'R\$ ${formater.format(reviewArguments.cryptoBeingExchangedValue * reviewArguments.cryptoBeingExchangeData.current_price).toString()}';
     Map<String, String> rowInformation = {
-      'Converter': cryptoBeingExchangedInfo,
-      'Receber': cryptoToExchangedInfo,
-      'Câmbio': exchangeEqualsTo,
+      AppLocalizations.of(context)!.payWith: cryptoBeingExchangedInfo,
+      AppLocalizations.of(context)!.receive: cryptoToExchangedInfo,
+      AppLocalizations.of(context)!.exchangeRate: exchangeEqualsTo,
     };
 
     return Column(

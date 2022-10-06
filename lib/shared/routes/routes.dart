@@ -20,8 +20,10 @@ Route<dynamic>? onGenerateRoute(settings) {
           const WalletPage(),
     );
   } else if (settings.name == TransactionsPage.route) {
-    return DefaultPageRoute(
-      child: const TransactionsPage(),
+    return PageRouteBuilder(
+      pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) =>
+          const TransactionsPage(),
     );
   } else if (settings.name == DetailsPage.route) {
     final arguments = settings.arguments as CryptoDataArguments;

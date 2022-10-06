@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../constants/app_colors.dart';
 import '../controllers/asset_provider.dart';
 import '../controllers/providers.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BottomNavBar extends HookConsumerWidget {
   const BottomNavBar({super.key});
@@ -21,20 +22,20 @@ class BottomNavBar extends HookConsumerWidget {
             ? Navigator.pushNamed(context, WalletPage.route)
             : Navigator.pushNamed(context, TransactionsPage.route);
       },
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: ImageIcon(
+          icon: const ImageIcon(
             warrenIcon,
             size: 22,
           ),
-          label: 'Portfólio',
+          label: AppLocalizations.of(context)!.portfolio,
         ),
         BottomNavigationBarItem(
-          icon: ImageIcon(
+          icon: const ImageIcon(
             cryptoCurrencyIcon,
             size: 24,
           ),
-          label: 'Movimentações',
+          label: AppLocalizations.of(context)!.transactions,
         ),
       ],
     );
