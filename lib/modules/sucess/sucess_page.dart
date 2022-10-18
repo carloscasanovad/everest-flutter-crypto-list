@@ -37,14 +37,10 @@ class SuccessPage extends HookConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Hero(
-              tag: 'check',
-              child: Image.asset(successIcon),
-            ),
             Container(
               padding: const EdgeInsets.symmetric(
-                vertical: 30,
-                horizontal: 15,
+                vertical: 15,
+                horizontal: 10,
               ),
               width: MediaQuery.of(context).size.width,
               child: Column(
