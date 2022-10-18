@@ -43,18 +43,15 @@ class SuccessPage extends HookConsumerWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(
-                vertical: 15,
-                horizontal: 10,
+                vertical: 30,
+                horizontal: 15,
               ),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Text(
-                   AppLocalizations.of(context)!.successTitle,
+                    AppLocalizations.of(context)!.successTitle,
                     style: kSucessTitle1Style,
-                  ),
-                  const SizedBox(
-                    height: 10,
                   ),
                   Text(
                     AppLocalizations.of(context)!.successSubtitle,
